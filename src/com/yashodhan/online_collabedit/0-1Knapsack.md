@@ -43,74 +43,77 @@ Initial State: (prof, wt, W, 0)
 // Implementation
 // ===========================================================================
 
-```
+```java
 //////////////////////////////////////////////
-public static void main(String [] args) {
-int W = 4;
-int profit[] = new int[]{1, 2, 3};
-int weight[] = new int[]{4, 5, 1};
-return knapsackMaxProfit(prof, wt, W);
-}
+class KnapSack {
+    public static void main(String[] args) {
+        int W = 4;
+        int profit[] = new int[]{1, 2, 3};
+        int weight[] = new int[]{4, 5, 1};
+        return knapsackMaxProfit(prof, wt, W);
+    }
 
 
 //////////////////////////////////////////////
 
-int knapsackMaxProfit(int[] prof, int[] wt, int W) {
+    int knapsackMaxProfit(int[] prof, int[] wt, int W) {
 // initial state -- Start from 0th item
-return knapsackMaxProfitUtil(prof, wt, prof.length W, 0);
-}
+        return knapsackMaxProfitUtil(prof, wt, prof.length W, 0);
+    }
 
 //////////////////////////////////////////////
 
-int knapsackMaxProfitUtil(int[] prof, int[] wt,int size, int W, int i) {
+    int knapsackMaxProfitUtil(int[] prof, int[] wt, int size, int W, int i) {
 // Base case
-if(wt[i] > W ){
-return 0;
-}
+        if (wt[i] > W) {
+            return 0;
+        }
 
-    // Base case
-    if( i > size){
-        return 0;
-    }
-    
-    // Explore choices
-    int maxProfit = Math.max(prof[i] + knapsackMaxProfitUtil(prof, wt, size, W-wt[i], i+1),
-     knapsackMaxProfitUtil(prof, wt,size, W, i+1));
-    
-    // Recursive choices
-    return maxProf;
-}
+        // Base case
+        if (i > size) {
+            return 0;
+        }
 
-///////////////////////////////////////////////////
-int knapsackMaxProfitUtilMemoized(int[] prof, int[] wt,int size, int W, int i, int[] memo) {
-    // Base case
-    if(wt[i] > W ){
-        return 0;
+        // Explore choices
+        int maxProfit = Math.max(prof[i] + knapsackMaxProfitUtil(prof, wt, size, W - wt[i], i + 1),
+                knapsackMaxProfitUtil(prof, wt, size, W, i + 1));
+
+        // Recursive choices
+        return maxProf;
     }
-    
-    // Base case
-    if( i > size){
-        return 0;
-    }
-    
-    if(memo[i] != -1 ){
+
+    ///////////////////////////////////////////////////
+    int knapsackMaxProfitUtilMemoized(int[] prof, int[] wt, int size, int W, int i, int[] memo) {
+        // Base case
+        if (wt[i] > W) {
+            return 0;
+        }
+
+        // Base case
+        if (i > size) {
+            return 0;
+        }
+
+        if (memo[i] != -1) {
+            return memo[i];
+        }
+
+        // Explore choices
+        memo[i] = Math.max(prof[i] + knapsackMaxProfitUtil(prof, wt, size, W - wt[i], i + 1),
+                knapsackMaxProfitUtil(prof, wt, size, W, i + 1));
+
+        // Recursive choices
         return memo[i];
     }
-    
-    // Explore choices
-     memo[i] = Math.max(prof[i] + knapsackMaxProfitUtil(prof, wt, size, W-wt[i], i+1),
-     knapsackMaxProfitUtil(prof, wt,size, W, i+1));
-    
-    // Recursive choices
-    return memo[i];
 }
+
 
 
 ```
 
 ### Retro
 
-Took 18 mins to solve recursive way
+Took **18 mins** to solve recursive way
 
 handled all the cases
 

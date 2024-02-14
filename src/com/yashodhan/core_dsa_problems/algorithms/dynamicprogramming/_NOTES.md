@@ -214,25 +214,27 @@ Well we try solving problem until sub-problems gets solved. Similar to recursive
 
 #### Pseudocode
 
-```
-0. Input: 
-        w[N] = [10,20,30],  val[N] = [100,200,300]
-        W=7
-        Constraints[W+1]=[0,1,2,3,4,5,6,7]    ( This is CONSTRAINTS dimention)
-   Output:
-        DP[N+1][M+1]
-        ( DP[i][j] means solution to problem with N=i and M=j ) 
-        
-1. BASE CASE: Initialize First row and First column ( USE FOR LOOPS)
-    (Make sure to choose CORRECT initial value as per problem)    
+```java
+        0.Input and Output:
+        int w[N]=[10,20,30],int val[N]=[100,200,300]
+        int W=7
+        Constraints[W+1]=[0,1,2,3,4,5,6,7](This is CONSTRAINTS dimention)
 
-2. CHOICE DIAGRAM: Use PRE solved subproblems to make a choice for current DP[i][j]
-    FOR (i =1 : i < N+1)
-        FOR (j =1: j< M+1)
-             // IF-ELSE-MAX-CHOICES Goes here
-3. Your answer will be present in DP[N+1][M+1]
+        Output:int DP[N+1][M+1];
 
-4. Return DP[N+1][M+1] 
+        (DP[i][j]means solution to problem with N=i and M=j)
+
+        1.BASE CASE:Initialize First row and First column(USE FOR LOOPS)
+        (Make sure to choose CORRECT initial value as per problem)
+
+        2.CHOICE DIAGRAM:Use PRE solved subproblems to make a choice for current DP[i][j]
+        for(i=1:i<N+1)
+        for(j=1:j<M+1)
+        // if-else-MAX-CHOICES Goes here
+
+        3.Your answer will be present in DP[N+1][M+1]
+
+        4.return DP[N+1][M+1] 
 ```
 
 #### Time Complexity

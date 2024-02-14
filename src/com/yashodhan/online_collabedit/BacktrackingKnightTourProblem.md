@@ -1,9 +1,10 @@
-
 ## Learnings
+
 **31/12/2024**
 
-TOOK total 40 mins without any interactions 
+TOOK total 40 mins without any interactions
 Saved 5 mins for discussions and dryrun still failed to do ALL within time
+
 ```
 
 
@@ -48,8 +49,8 @@ Saved 5 mins for discussions and dryrun still failed to do ALL within time
 
 ```
 
-
 ## EDITOR
+
 ```
 ### ####################### Problem Description and Assumptions
 //    Chess board of 8x8 size ..Knight starting from 0,0 and ending to 7,7
@@ -60,9 +61,9 @@ Saved 5 mins for discussions and dryrun still failed to do ALL within time
 //    Input:
 ```
 
-
 ### ################### Coding--Approach(A)
-```
+
+```java
 /**
  This is for handling Knight Tour problem
  */
@@ -147,17 +148,18 @@ public class KnightVisitorApp {
     }
 ```
 
-### #######################     Dryrun
+### ####################### Dryrun
+
 COULD NOT DO ( ****)
 
-### #######################     Optimizations/NTH    
+### ####################### Optimizations/NTH
 
 1. Board with some function and print all the inputs
 2. Board with obstracles
 3. Parallel processing ??? TBD
 
+### ####################### COMPLEXITY
 
-### #######################     COMPLEXITY    
 // COULD NOT DO
 
 
