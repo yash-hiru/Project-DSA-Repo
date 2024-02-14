@@ -61,7 +61,40 @@ public class MinJumpsSolution {
     }
 
     /**
-     * APPROACH- MEMOIZATION Solution recursive
+     * APPROACH-Plain Recursion
+     * Move forward with possible outputs. Block at end state
+     *
+     * @param arr
+     * @param pos
+     * @return minJumps
+     */
+    private int RECURSIVE_minJumpsUtil(int[] arr, int pos) {
+
+        // == BASE CASE== Happy (Found some solution)
+        if (pos == arr.length - 1) {
+            return 0;
+        }
+
+        // == RECURSE == Recursive for partial solution
+        // Read position to find next steps
+        int steps = arr[pos];
+        int minJumps = Integer.MAX_VALUE - 1;
+
+        for (int i = pos + 1; i < pos + 1 + steps; i++) {
+            // == BASE CASE== Ignore Invalid state instead of returning INT_MAX for it..It could lead to INT overflow
+            // due to repeated addition of 1 in recursive calls
+            if (i <= arr.length - 1) {
+                // Ignore invalid positions
+                // increment jump count by ONE for valid jump
+                minJumps = Math.min(minJumps, 1 + RECURSIVE_minJumpsUtil(arr, i));
+            }
+
+        }
+        return minJumps;
+    }
+
+    /**
+     * APPROACH-MEMOIZATION Solution recursive
      * Move forward with possible outputs. Block at end state
      *
      * @param arr
@@ -98,36 +131,40 @@ public class MinJumpsSolution {
     }
 
     /**
-     * APPROACH- Plain Recursion
-     * Move forward with possible outputs. Block at end state
+     * APPROACH-TABULATION
      *
      * @param arr
-     * @param pos
      * @return minJumps
+     * @2024-02-14
      */
-    private int RECURSIVE_minJumpsUtil(int[] arr, int pos) {
+    private int TABULATION_minJumpsUtil(int[] arr, int size) {
+        // jumpsTable[size-1] will hold the result (min jumpsTable)
+        int jumpsTable[] = new int[size];
+        // result
+        int pos, oldPos;
 
-        // == BASE CASE== Happy (Found some solution)
-        if (pos == arr.length - 1) {
-            return 0;
-        }
+        // if first element is 0,
+        if (size == 0 || arr[0] == 0)
+            return Integer.MAX_VALUE;
+        // end cannot be reached
 
-        // == RECURSE == Recursive for partial solution
-        // Read position to find next steps
-        int steps = arr[pos];
-        int minJumps = Integer.MAX_VALUE - 1;
+        jumpsTable[0] = 0;
 
-        for (int i = pos + 1; i < pos + 1 + steps; i++) {
-            // == BASE CASE== Ignore Invalid state instead of returning INT_MAX for it..It could lead to INT overflow
-            // due to repeated addition of 1 in recursive calls
-            if (i <= arr.length - 1) {
-                // Ignore invalid positions
-                // increment jump count by ONE for valid jump
-                minJumps = Math.min(minJumps, 1 + RECURSIVE_minJumpsUtil(arr, i));
+        // OUTER FOR LOOP-- For finding Min Jumps from 0 to that 'pos'.
+        for (pos = 1; pos < size; pos++) {
+            jumpsTable[pos] = Integer.MAX_VALUE;
+            // INNER FOR LOOP -- To use previous result from <0> to <pos-1> to determine optimal jumpsTable for pos
+            for (oldPos = 0; oldPos < pos; oldPos++) {
+                // IF-- Condition1:To check upper bound --Condition2: To Filter out old invalid paths
+                if (pos <= (oldPos + arr[oldPos]) && jumpsTable[oldPos] != Integer.MAX_VALUE) {
+                    // Choose MIN between: 1. Current solution(jumpsTable[pos]) and (jumpsTable[oldPos] + 1)
+                    jumpsTable[pos] = Math.min(jumpsTable[pos], jumpsTable[oldPos] + 1);
+                    // TODO-- STILL CONFUSING AS WHY we stopped as soon as if condition gets satisfied.
+                    break;
+                }
             }
-
         }
-        return minJumps;
+        return jumpsTable[size - 1];
     }
 
 }

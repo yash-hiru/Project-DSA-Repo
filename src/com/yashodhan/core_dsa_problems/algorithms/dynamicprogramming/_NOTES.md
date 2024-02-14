@@ -1,43 +1,96 @@
-# Dynamic Programming
+## Dynamic Programming
 
 ---
 
-## Background
+### Overview
+
+#### Background
+
 1. **Recursion is parent** wheras **DP, Divide and Conquer and Dynamic Programming** are **children**
 2. Recursion with memory
 3. Best of both worlds **Accuracy of Brute force** and **Efficiency of Greedy**
 
----
-## More detailed Info ?
-### Use Cases
+#### Use Cases
+
 1. Searching **Finding optimal solution(s)**
 2. Count **Total number of Solutions(Need not to optimal) Solutions** to given problem.
 
-## Approach
+```DP is NOT restricted to optimization problems. ```
 
 ---
-### Identification of DP problem
-- Requirements (All requirements should match):
-  - **Overlapping sub-problems** -- Solving same subtask time and again
-  - **Optimal Substructure** -- Optimal solution to a problem is related to an optimal solution to a smaller problem within the same problem definition.
-  - **At least one solution exist** which could not solved using Greedy way.
-  - **Greedy way not possible**
-  - Problem time complexity **can not be reduced without using O(N) space**
 
-### Ground Work
+### How to Approach ?
+
+#### Identification of DP problem ==>
+
+- Requirements (All requirements should match):
+    - [MUST HAVE] **Overlapping sub-problems** -- Solving same subtask time and again
+    - [NICE TO HAVE] **Optimal Substructure** -- Optimal solution to a problem is related to an optimal solution to a
+      smaller problem
+      within the same problem definition.
+    - [MUST HAVE]**At least one solution exist** which could not solved using Greedy way.
+    - [MUST HAVE]**Greedy way not possible** Prefer greedy before DP if possible.
+    - [MUST HAVE] Problem time complexity **can not be reduced without using O(N) space**
+
+#### Ground Work ==>
+
 We have established that **This IS A DP problem**. Now start solving it.
 Start with defining and elaborating these concepts:
--  **Objective** : ```Fact (mostly number)``` to be maximized/minimized
--  **States**: Inputs to algorithm 
-   1. Types of inputs: Immutable(Constant Inputs), Mutable(Tracking state), Reducing(objective)
--  **Stages**: 
-   -  **Current State**: ```Recursive/Iterative call``` for ```current``` snapshot of mutable and immutable parameters
-   -  **Next State**: ```Sub-problems```(with their own set of input params) emerging from ```each``` of ```choices``` made at current choice. 
-   -  **Base case**: State ```without``` any further sub-problems. Recursion ```ends``` here; iteration ```starts/ends``` here.
--  **Sub Problem**: ```Same problem definition``` emerging with same goal but for ```reduced input```.
 
-### Implement the DFS recursive solution ( Quick and Easy way)
-**Typical Pseudocode**
+**Define Objective** :
+
+- ```Fact (mostly number)``` to be maximized/minimized
+
+**Identify Inputs**: Inputs to algorithm
+
+1. Immutable(Constant Inputs)
+2. Mutable(Output parameter-result)
+3. Converging(increase/decrease) input across diffrent states (objective)
+
+**Identify States**:
+
+```Processing 1 input at 1 time in 1 recursive call is the way forward ```
+
+- **Current State**: ```Recursive/Iterative call``` for ```current``` snapshot of mutable and immutable parameters
+- **Next State**: ```Sub-problems```(with their own set of input params) emerging from ```each``` of ```choices```
+  made at current choice.
+- **Base case**: State ```without``` any further sub-problems. Recursion ```ends``` here;
+  iteration ```starts/ends``` here.
+
+**Identify choices during each state**:
+
+```1. Binary/Ternary/Finite choices.```
+
+- Filter out Invalid choices beforehand
+- Solve choice C1, C2, C3...as sub-problems recursively. Make sure to modify inputs to these subproblems.
+- Choose either of sub-solution based on criteria viz. MIN/MAX/etc.
+- e.g.
+    - MAX (val[C1] + Func(C1), val[C2] + Func(C2))
+    - 1+ MIN(Func(C1) ,Func(C2))
+
+```2. Variable set of choices:```
+
+- Follow same logic but in for loop ( including filters)
+- Define optimal outcome outside for loop and revise it as needed
+- Exit for loop and return the optimal outcome for this call
+- **Sub Problem(Nested states)**: Recursive calls for next set of inputs. ```Same problem definition``` emerging with
+  same goal but for ```reduced input```.
+- **Single Problem** -- *Unique* combination of *mutable* input arguments
+- **Memoize** -- Dont solve *repeated/overlapping sub-problems*. Cache the result instead.
+
+---
+
+### APPROACH ==> PLAIN RECURSIVE (DFS WAY)
+
+#### Pre-requisite ==>
+
+- Define problem inputs
+- Identify stages, transition, choices for each state
+- Just follow underlined pseudocode.
+-
+
+#### Typical Pseudocode ==>
+
 ```
 /**
 Returning number is easy HOWEVER returning actual path/list/array of outout 
@@ -98,36 +151,55 @@ DP_SOLUTION_UTIL(inputA, inputB, Output, recursivePathOutput) {
 // Outputs: recursivePath and int (MIN/MAX value)
 ```
 
+#### Time Complexity ==>
 
-### TOP DOWN Implementation- Memoization
-Why top down ??
+- Exponential ( like Brute force/backtracking) K^N or factorial
+
+#### Space Complexity ==>
+
+- O(1) or O(K)
+
+---
+
+### APPROACH ==> TOP DOWN Implementation- Memoization
+
+#### Why top down ??
 
 Well we try solving problem until sub-problems gets solved. Similar to recursive approach
 
 #### Determine Memoization Dimensions
+
 - This is **TRICKY** to determine dimensions of memo
 - However, Identify **Unique parameters** to DP_SOLUTION_UTILS function
 - Memo/DP table => This could be 1D, 2D or 3D ... **Mostly 2D**
 - Create memo with dimensions ```<Dim1-Input1, Dim2-Input2, Dim3-Output>```
 - List down **all possible values of Output**
-- ** Just add 2 lines** in recursive code
-  - Return the value from memo for current call if present
-  - Replace recursive calls with memoized reference viz. DP[n-1][w]
+- **Just add 2 lines** in recursive code**
+    - WRITE ==> Write to memo at the end of getting optimal value for current call
+    - READ ==> Read from memo at the beginning ( after base case--before recursion) to avoid reevaluating same
+      overlapping problem.
+
 #### Time Complexity
-- Polynomial of degree 2 
-- Mostly O(NxM)
+
+- Polynomial of degree 2, 3 so on...... O(N^2)
+- Mostly linear: O(N), O(N2) , O(NxM)
 
 #### Space Complexity
+
 - Polynomial of degree 2
 - Mostly O(NxM)
 
+---
 
+### (OPTIONAL for 2024) APPROACH==> Bottom Up/Tabulation
 
-### Bottom Up Implementation- Tabulation (Preffered)
 ### Prerequisite
+
 - Implement recursively
 - Reverse the top down by removing recursive call to **iterative call**
+
 #### Determine Tabulation Dimensions ( same as Memoization BUT...)
+
 - This is **TRICKY** to determine dimensions of memo
 - However, Identify **Unique parameters** to DP_SOLUTION_UTILS function
 - Memo/DP table => This could be 1D, 2D or 3D ... **Mostly 2D**
@@ -137,9 +209,11 @@ Well we try solving problem until sub-problems gets solved. Similar to recursive
     - Return the value from memo for current call if present
     - Replace recursive calls with memoized reference viz. DP[n-1][w]
 - Unlike Memoization ( DP[N][M]..Size of the table would be DP[N **+1**][M **+1**] )
-- - **First row and first column** are **dependencies of base cases**
+-
+    - **First row and first column** are **dependencies of base cases**
 
 #### Pseudocode
+
 ```
 0. Input: 
         w[N] = [10,20,30],  val[N] = [100,200,300]
@@ -160,24 +234,27 @@ Well we try solving problem until sub-problems gets solved. Similar to recursive
 
 4. Return DP[N+1][M+1] 
 ```
+
 #### Time Complexity
+
 - Polynomial of degree 2
 - Mostly O(NxM)
 
 #### Space Complexity
+
 - Polynomial of degree 2
 - Mostly O(NxM)
 
+---
 
+### Must Do Dynamic Programming Problems
 
-## Must Do Dynamic Programming Problems
-<TODO>
+Refer chrome bookmarks for more details.
 
-----
+---
 
-```
+### Useful References
 
-```
-## Useful References
+Refer chrome bookmarks
 
 ---
