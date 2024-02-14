@@ -2,6 +2,10 @@ package com.hiru.core_dsa_problems.algorithms.dynamicprogramming;
 
 import java.util.ArrayList;
 
+/**
+ * Find minimum number of coins to make a given value (Coin Change)
+ * https://www.geeksforgeeks.org/find-minimum-number-of-coins-that-make-a-change/
+ */
 public class MinimumCoins {
     static ArrayList<ArrayList<Integer>> solutions = new ArrayList<>();
 
@@ -37,6 +41,8 @@ public class MinimumCoins {
 
         // DP explore choices recursively
         int minValue = Integer.MAX_VALUE;
+        // IMPORTANT-- Repeated items could have same for loop in all recursive call just like
+        // backtracking problem of ratInMaze ( all choices at all stages are allowed)
         for (int i : coins) {
             selectedCoins.add(i);
             int currMinCoins = getMinCoinsRecurseDP(coins, Value - i, selectedCoins);
