@@ -30,7 +30,7 @@ import java.util.ArrayList;
  * ...................Counted as well as stored all the islands
  */
 
-public class GraphFindIslands {
+public class FindIslands {
 
     //////////////////////////////
     public static void main(String[] args) {
