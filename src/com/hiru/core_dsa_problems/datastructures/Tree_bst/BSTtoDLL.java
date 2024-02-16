@@ -1,4 +1,4 @@
-package com.hiru.core_dsa_problems.datastructures.bst;
+package com.hiru.core_dsa_problems.datastructures.Tree_bst;
 
 // Java program to convert a given Binary Tree to Doubly Linked List
 

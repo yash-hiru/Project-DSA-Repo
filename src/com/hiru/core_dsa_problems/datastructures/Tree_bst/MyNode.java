@@ -1,4 +1,4 @@
-package com.hiru.core_dsa_problems.datastructures.bst;
+package com.hiru.core_dsa_problems.datastructures.Tree_bst;
 
 import com.hiru.core_dsa_problems.commons.MyLogger;
 

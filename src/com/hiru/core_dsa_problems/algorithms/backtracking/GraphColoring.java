@@ -120,6 +120,8 @@ public class GraphColoring {
                 }
                 // NOT SAFE == UNSAFE for neighbor (IMPORTANT)
                 // CHECK NEIGHBOR'S NEIGHBOR ( FOR VERY OLD UPDATED VERTICES and TWO WAY )
+                // LEARNINGS ==> GFG solution DOES not work for this sample graph; it is missing this neighbors neighbor
+                // color conflict check.
                 for (int neighborNeighbor = 0; neighborNeighbor < graph[0].length; neighborNeighbor++) {
                     if (graph[neighbor][neighborNeighbor] && colorsSolution[neighborNeighbor] == color) {
                         return false;
