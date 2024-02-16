@@ -16,6 +16,8 @@
 **Data Structures**
 
 - core_dsa_problems/datastructures/bst
+- core_dsa_problems/datastructures/trie
+- core_dsa_problems/datastructures/matrix
 - core_dsa_problems/datastructures/graph
 - core_dsa_problems/datastructures/stack
 - core_dsa_problems/datastructures/linkedlist.single
