@@ -1,4 +1,4 @@
-package com.hiru.core_dsa_problems.algorithms.backtracking;
+package com.hiru.core_dsa_problems.algorithms.backtracking.array;
 
 import java.util.ArrayList;
 
@@ -38,9 +38,10 @@ public class PermutationsOfString {
     /**
      * CORE METHOD-- Recursively find permutations and add to the result
      *
-     * @param permutation      Increases upon each recursive invocation..Leads to solution ( size N string) for some valid candidates
+     * @param permutation Increases upon each recursive invocation..Leads to solution ( size N string) for some valid candidates
      * @param uniqueCharacters Unique characters
-     * @param permutations     Solution (In out parameter)
+     * @param permutations Solution (In out parameter)
+     *
      * @return true for valid candidate call and false for invalid/backtracked partial solution inner recursive calls
      */
     private static boolean CORE_findPermutationsRecursive(

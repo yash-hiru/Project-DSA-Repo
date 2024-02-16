@@ -1,4 +1,4 @@
-package com.hiru.core_dsa_problems.datastructures.maze.problems;
+package com.hiru.core_dsa_problems.algorithms.backtracking.matrix;
 
 import java.util.ArrayList;
 

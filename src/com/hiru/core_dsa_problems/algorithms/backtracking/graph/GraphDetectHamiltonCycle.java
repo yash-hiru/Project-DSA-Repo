@@ -1,4 +1,4 @@
-package com.hiru.core_dsa_problems.algorithms.backtracking;
+package com.hiru.core_dsa_problems.algorithms.backtracking.graph;
 
 import java.util.ArrayList;
 
@@ -47,10 +47,11 @@ public class GraphDetectHamiltonCycle {
     /**
      * CORE FUNCTION---- Recursive function to detect all the hamilton cycles
      *
-     * @param graph              readonly parameter- Adjucency matrix representation
-     * @param vertex             current vertex to be visited
+     * @param graph readonly parameter- Adjucency matrix representation
+     * @param vertex current vertex to be visited
      * @param vertexVisitorState Global state of all the visited vertex at any given time
-     * @param path               Global state of tracking the path as when node gets visited
+     * @param path Global state of tracking the path as when node gets visited
+     *
      * @return True if cycle exist
      */
     public static boolean CORE_detectAnyHamiltonCycleRecurse(final int[][] graph,
@@ -93,6 +94,7 @@ public class GraphDetectHamiltonCycle {
      * Check if all the vertices are visited
      *
      * @param vertexVisitorState
+     *
      * @return True if Yes
      */
     private static boolean allVisited(boolean[] vertexVisitorState) {

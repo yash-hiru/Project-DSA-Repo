@@ -1,4 +1,4 @@
-package com.hiru.core_dsa_problems.algorithms.dynamicprogramming;
+package com.hiru.core_dsa_problems.algorithms.dynamicprogramming.array;
 //TODO: Implement 15/02/2024
 
 /**

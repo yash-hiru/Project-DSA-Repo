@@ -1,4 +1,4 @@
-package com.hiru.core_dsa_problems.algorithms.dynamicprogramming;
+package com.hiru.core_dsa_problems.algorithms.dynamicprogramming.array;
 
 /**
  * Given a set of non-negative integers and a value sum, the task is to check

@@ -1,4 +1,4 @@
-package com.hiru.core_dsa_problems.algorithms.dynamicprogramming;
+package com.hiru.core_dsa_problems.algorithms.dynamicprogramming.array;
 
 import java.util.ArrayList;
 

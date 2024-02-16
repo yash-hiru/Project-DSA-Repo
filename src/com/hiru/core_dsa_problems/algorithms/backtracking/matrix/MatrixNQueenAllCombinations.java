@@ -1,4 +1,4 @@
-package com.hiru.core_dsa_problems.algorithms.backtracking;
+package com.hiru.core_dsa_problems.algorithms.backtracking.matrix;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -39,8 +39,8 @@ public class MatrixNQueenAllCombinations {
     /**
      * Recursive method for backtracking
      *
-     * @param column            -- Column to be updated with current queen ( 1column :: 1queen)
-     * @param size              readonly -- dimension of array
+     * @param column -- Column to be updated with current queen ( 1column :: 1queen)
+     * @param size readonly -- dimension of array
      * @param singleCombination -- Single valid combination
      * @param allCombinations
      */
@@ -85,6 +85,7 @@ public class MatrixNQueenAllCombinations {
      * @param row
      * @param column
      * @param singleCombination
+     *
      * @return
      */
     private boolean isConflicting(int row, int column, char[][] singleCombination) {

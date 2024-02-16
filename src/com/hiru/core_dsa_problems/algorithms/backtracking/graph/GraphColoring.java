@@ -1,4 +1,4 @@
-package com.hiru.core_dsa_problems.algorithms.backtracking;
+package com.hiru.core_dsa_problems.algorithms.backtracking.graph;
 
 import java.util.Arrays;
 
@@ -63,6 +63,7 @@ public class GraphColoring {
      * @param numberOfVertices
      * @param vertexId
      * @param solutionColors
+     *
      * @return
      */
     public boolean CORE_colorGraphRecursively(final boolean[][] graph,
@@ -101,10 +102,11 @@ public class GraphColoring {
      * 2. Color conflicts with neighbor's neighbors (Conflict for neighbor vertex)
      * Check neighbor's neighbor too (learning)
      *
-     * @param vertex         current vertex
-     * @param color          chosen color
+     * @param vertex current vertex
+     * @param color chosen color
      * @param graph
      * @param colorsSolution
+     *
      * @return true if safe to use proposed 'color' for 'vertex'
      */
     private boolean isSafe(int vertex, int color, boolean[][] graph, int[] colorsSolution) {

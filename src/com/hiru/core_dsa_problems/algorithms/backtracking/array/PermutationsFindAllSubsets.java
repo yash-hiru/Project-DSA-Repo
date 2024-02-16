@@ -1,4 +1,4 @@
-package com.hiru.core_dsa_problems.algorithms.backtracking;
+package com.hiru.core_dsa_problems.algorithms.backtracking.array;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -44,8 +44,8 @@ public class PermutationsFindAllSubsets {
     /**
      * CORE -- Find all subsets recursively
      *
-     * @param inputSet       Immutable list of unique elements
-     * @param subset         Partial Combination being passed in 'reduced' fashion
+     * @param inputSet Immutable list of unique elements
+     * @param subset Partial Combination being passed in 'reduced' fashion
      * @param supersetHashes
      */
     public static void CORE_findAllSubsetsRecursively(final ArrayList<Integer> inputSet,

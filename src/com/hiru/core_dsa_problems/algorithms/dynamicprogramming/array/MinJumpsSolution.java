@@ -1,4 +1,4 @@
-package com.hiru.core_dsa_problems.algorithms.dynamicprogramming;
+package com.hiru.core_dsa_problems.algorithms.dynamicprogramming.array;
 
 /**
  * Given an array arr[] where
@@ -66,6 +66,7 @@ public class MinJumpsSolution {
      *
      * @param arr
      * @param pos
+     *
      * @return minJumps
      */
     private int RECURSIVE_minJumpsUtil(int[] arr, int pos) {
@@ -100,6 +101,7 @@ public class MinJumpsSolution {
      * @param arr
      * @param pos
      * @param memo
+     *
      * @return
      */
     private int MEMOIZATION_minJumpsUtil(int[] arr, int pos, int[] memo) {
@@ -134,6 +136,7 @@ public class MinJumpsSolution {
      * APPROACH-TABULATION
      *
      * @param arr
+     *
      * @return minJumps
      * @2024-02-14
      */
