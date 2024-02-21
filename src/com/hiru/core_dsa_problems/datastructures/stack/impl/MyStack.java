@@ -1,4 +1,4 @@
-package com.hiru.core_dsa_problems.datastructures.stack;
+package com.hiru.core_dsa_problems.datastructures.stack.impl;
 
 class MyStack {
 

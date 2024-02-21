@@ -1,4 +1,4 @@
-package com.hiru.core_dsa_problems.datastructures.graph;
+package com.hiru.core_dsa_problems.datastructures.graph.impl;
 
 import com.hiru.core_dsa_problems.commons.MyLogger;
 

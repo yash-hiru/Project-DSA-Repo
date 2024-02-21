@@ -1,4 +1,4 @@
-package com.hiru.core_dsa_problems.datastructures.graph;
+package com.hiru.core_dsa_problems.datastructures.graph.impl;
 
 import com.hiru.core_dsa_problems.commons.MyLogger;
 
@@ -32,6 +32,7 @@ public class MyGraphAsAdjacencyMatrix {
      *
      * @param source
      * @param destination
+     *
      * @return
      */
     public int getEdge(int source, int destination) {
@@ -50,6 +51,7 @@ public class MyGraphAsAdjacencyMatrix {
      *
      * @param source
      * @param destination
+     *
      * @return
      * @ param weight
      */

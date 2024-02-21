@@ -1,4 +1,4 @@
-package com.hiru.core_dsa_problems.datastructures.graph;
+package com.hiru.core_dsa_problems.datastructures.graph.impl;
 
 import java.util.ArrayList;
 import java.util.HashSet;

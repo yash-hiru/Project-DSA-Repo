@@ -1,4 +1,4 @@
-package com.hiru.core_dsa_problems.datastructures.Tree_Trie;
+package com.hiru.core_dsa_problems.datastructures.trie.impl;
 
 /**
  * ========================== Use cases ==========================
