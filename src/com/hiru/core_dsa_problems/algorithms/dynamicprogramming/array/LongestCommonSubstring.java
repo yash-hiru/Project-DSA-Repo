@@ -36,9 +36,9 @@ public class LongestCommonSubstring {
         }
 
         //--------- INVOKE LCS UTIL
-        lcsUtil(s1, s2, s1.length(), s2.length(), 0, 0, memo);
+        CORE_calculate_lcsUtil(s1, s2, s1.length(), s2.length(), 0, 0, memo);
 
-        // EXTREMELY IMPORTANT-- Unlike typical DP problem, we don't find solution at [0][0]
+        // EXTREMELY IMPORTANT-- Unlike typical DP problem, we don't find solution at memo[0][0]
         // Make sure to explore all the memo to find the max solution
         int maxLcs = Integer.MIN_VALUE;
         int pos1 = 0;
@@ -71,13 +71,13 @@ public class LongestCommonSubstring {
      *
      * @return
      */
-    private static int lcsUtil(final String s1,
-                               final String s2,
-                               final int len1,
-                               final int len2,
-                               int i1,
-                               int i2,
-                               int[][] memo) {
+    private static int CORE_calculate_lcsUtil(final String s1,
+                                              final String s2,
+                                              final int len1,
+                                              final int len2,
+                                              int i1,
+                                              int i2,
+                                              int[][] memo) {
         //------ BASE CASE-- s1 empty
         if (i1 == len1 || i2 == len2) {
             memo[len1][len2] = 0;
@@ -93,15 +93,15 @@ public class LongestCommonSubstring {
         // CASE 1 -- Character matched (special case) >>> JUMP FROM HERE
         if (s1.charAt(i1) == s2.charAt(i2)) {
             // CHARACTER MATCHED --Happy case
-            memo[i1 + 1][i2 + 1] = lcsUtil(s1, s2, len1, len2, i1 + 1, i2 + 1, memo); // Nested call cached
+            memo[i1 + 1][i2 + 1] = CORE_calculate_lcsUtil(s1, s2, len1, len2, i1 + 1, i2 + 1, memo); // Nested call cached
             memo[i1][i2] = 1 + memo[i1 + 1][i2 + 1]; // +1 for matched character
         }
         //EXTREMELY IMPORTANT--- We have got the best SHOT for max common substring at i1, i2 respectively..
         // Preserve the solution and explore other options
 
         // EXTRA PROCCESING >>> Explore other options ==> Unlike in LCSubsequence, DONT let these choices influence memo[i1][i2] position outcome
-        memo[i1 + 1][i2] = lcsUtil(s1, s2, len1, len2, i1 + 1, i2, memo);// Nested call cached
-        memo[i1][i2 + 1] = lcsUtil(s1, s2, len1, len2, i1, i2 + 1, memo);// Nested call cached
+        memo[i1 + 1][i2] = CORE_calculate_lcsUtil(s1, s2, len1, len2, i1 + 1, i2, memo);// Nested call cached
+        memo[i1][i2 + 1] = CORE_calculate_lcsUtil(s1, s2, len1, len2, i1, i2 + 1, memo);// Nested call cached
 
         // >>> JUMP TO HERE
         //This is the answer for starting pos < i1, i2>

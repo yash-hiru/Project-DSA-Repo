@@ -11,7 +11,7 @@ package com.hiru.core_dsa_problems.algorithms.dynamicprogramming.array;
  * Output:1
  * Explanation: The longest increasing subsequences are {3} and {2}
  */
-public class LongestIncreasingSubsequence {
+public class TODO_LongestIncreasingSubsequence {
 
     public static void main(String[] args) {
 
