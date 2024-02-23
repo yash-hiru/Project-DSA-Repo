@@ -1,6 +1,6 @@
 package com.hiru.core_dsa_problems.datastructures.graph.impl;
 
-import com.hiru.core_dsa_problems.commons.MyLogger;
+import com.hiru.core_dsa_problems._commons.MyLogger;
 
 import java.util.ArrayList;
 
