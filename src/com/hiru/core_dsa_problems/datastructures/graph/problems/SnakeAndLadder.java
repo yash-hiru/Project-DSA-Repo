@@ -59,10 +59,23 @@ public class SnakeAndLadder {
         snakesAndLadder.put(19, 7);
     }
 
+    /**
+     * DRIVER PROGRAM: --- MAIN
+     *
+     * @param args
+     */
     public static void main(String[] args) {
         SnakeAndLadder game = new SnakeAndLadder();
-        // game.playGame();// Simple play game
-        System.out.println("MIN THROWS >>>> " + game.CORE_getMinDiceThrows(1));
+        // PROBLEM1 --Simulate Game ( Hobby Problem)
+        //game.HOBBY_playGame();// Simple play game
+
+        // PROBLEM2 --Simulate Multi Player Game ( Hobby Problem)
+        System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>> Multiplayer Game Winner: "
+                + game.HOBBY_playGameMultiPlayer(4));
+
+        // PROBLEM2 -- Get Min Dice throws
+        System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> MIN THROWS >>>> "
+                + game.CORE_getMinDiceThrows(1));
     }
 
     /////////////////////////////////////// Throw Dice
@@ -112,6 +125,40 @@ public class SnakeAndLadder {
         }
         MyLogger.info("END-----------------------------------------------");
         // Got some solution -- >
+    }
+
+    ///////////////////////////////////////////// Find min moves ( UNRELATED TO PROBLEM) -- Board is not required at all
+    private int HOBBY_playGameMultiPlayer(int numPlayers) {
+        MyLogger.info("-----------------------------------START MUTIPLAYER-------------------------------------\n");
+        int position = START;
+        // Final goal
+        int[] positions = new int[numPlayers];
+        // Check End
+        boolean foundEnd = false;
+        int winner = -1;
+        int throwCount = 0;
+        while (!foundEnd) {
+            // Throw dice - Everyones turn
+            System.out.println(" -=-=-=-= -=-=-=-= -=-=-=-= ROUND" + ++throwCount + "-=-=-=-= -=-=-=-=  -=-=-=-=");
+            for (int i = 0; i < numPlayers; i++) {
+                System.out.println("  -=-=-=-= PLAYER :" + i);
+                int dice = HOBBY_throwDice();
+                // Get next pos
+                int nextPosition = HOBBY_getNextPositionForPlay(positions[i], dice);
+                positions[i] = nextPosition;
+            }
+            // Check if we have winner ?
+            for (int i = 0; i < numPlayers; i++) {
+                if (positions[i] == END) {
+                    foundEnd = true;
+                    winner = i;
+                    break;
+                }
+            }
+        }
+        MyLogger.info("-----------------------------------END MUTIPLAYER-------------------------------------\n");
+        // Got some solution -- >
+        return winner;
     }
 
 
