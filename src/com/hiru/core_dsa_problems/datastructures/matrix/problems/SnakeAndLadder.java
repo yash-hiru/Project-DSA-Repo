@@ -1,39 +1,9 @@
-package com.hiru.core_dsa_problems.datastructures.graph.problems;
+package com.hiru.core_dsa_problems.datastructures.matrix.problems;
 
 import com.hiru.core_dsa_problems.commons.MyLogger;
 
 import java.util.HashMap;
 import java.util.Random;
-
-//////////////////////////// Class Snake
-class Snake {
-    int from;
-    int to;
-
-    public Snake(int from, int to) {
-        if (from <= to) {
-            throw new RuntimeException("Invalid Snake: " + from
-                    + "-->" + to);
-        }
-        this.from = from;
-        this.to = to;
-    }
-}
-
-//////////////////////////// Class Ladder
-class Ladder {
-    int from;
-    int to;
-
-    public Ladder(int from, int to) {
-        if (from >= to) {
-            throw new RuntimeException("Invalid Ladder: " + from
-                    + "-->" + to);
-        }
-        this.from = from;
-        this.to = to;
-    }
-}
 
 /**
  * SNAKE AND LADDER ( Find Min Dice throws)
@@ -67,7 +37,7 @@ public class SnakeAndLadder {
     public static void main(String[] args) {
         SnakeAndLadder game = new SnakeAndLadder();
         // PROBLEM1 --Simulate Game ( Hobby Problem)
-        //game.HOBBY_playGame();// Simple play game
+        game.HOBBY_playGame();// Simple play game
 
         // PROBLEM2 --Simulate Multi Player Game ( Hobby Problem)
         System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>> Multiplayer Game Winner: "
@@ -112,7 +82,7 @@ public class SnakeAndLadder {
 
     ///////////////////////////////////////////// Find min moves ( UNRELATED TO PROBLEM) -- Board is not required at all
     private void HOBBY_playGame() {
-        MyLogger.info("START-----------------------------------------------");
+        MyLogger.info("START Single Player--------------------------------------------------------------------");
         int position = START;
         // Final goal
         while (position != END) {
@@ -123,8 +93,7 @@ public class SnakeAndLadder {
 
             position = nextPosition;
         }
-        MyLogger.info("END-----------------------------------------------");
-        // Got some solution -- >
+        MyLogger.info("End Single Player--------------------------------------------------------------------");        // Got some solution -- >
     }
 
     ///////////////////////////////////////////// Find min moves ( UNRELATED TO PROBLEM) -- Board is not required at all
@@ -200,7 +169,7 @@ public class SnakeAndLadder {
         for (int dice = 1; dice < 7; dice++) {
             // Get Next position from current state
             int nextPosition = CORE_nextPosition(dice, position); // Recurse
-            // DISCARD SNAKE ( learning after lot more debugging)
+            // DISCARD SNAKE (  after lot more debugging)
             if (nextPosition < position) {
                 continue;
             }
