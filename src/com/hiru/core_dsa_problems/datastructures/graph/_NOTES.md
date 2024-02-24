@@ -1,3 +1,9 @@
+<h1 style="text-align: center;"> Graphs </h1>
+
+### [Reference material](https://www.geeksforgeeks.org/graph-data-structure-and-algorithms)
+
+----
+
 ## Representations
 
 ### 1. Adjacency Matrix Representation
@@ -418,6 +424,44 @@ structures similar to Breadth First Search.
 - Transpose ( Reverse all edges ) =>    O(V + E)
 
 ### Tips
+
+#### Paths
+
+- If Path Exist
+- Find all possible paths
+- Single Source shortest Path
+- All pairs Shortest path
+- A-B shortest path in Multi-stage graph
+
+#### Cycles
+
+- Is Cycle graph
+- Is Cyclic graph ? How many cycles ?
+- Hamilton Cycle.
+    - Does it have one ?
+    - How many ?
+    - Print cycle
+    - Find minimal cycle in weighted graph
+- Find negative cycle
+- Clone DAG
+- Detect Cycle Using color
+
+#### Connectivity
+
+#### Topological Sorting
+
+#### Maximum Flow
+
+#### Minimum Spanning Tree
+
+- kruskal
+- Prims
+- Number of spanning trees
+- Buruvka algorithm
+
+#### Coloring
+
+####                           
 
 <TODO>
 ### References
