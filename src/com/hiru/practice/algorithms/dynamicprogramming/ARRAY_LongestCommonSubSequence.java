@@ -102,7 +102,7 @@ public class ARRAY_LongestCommonSubSequence {
 
 
     /**
-     * APPROACH1- DP Top down (Memoization)
+     * APPROACH2- DP Top down (Memoization)
      *
      * @return
      */

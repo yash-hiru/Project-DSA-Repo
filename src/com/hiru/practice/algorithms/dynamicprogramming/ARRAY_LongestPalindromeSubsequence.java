@@ -14,13 +14,13 @@ public class ARRAY_LongestPalindromeSubsequence {
 
     public static void main(String[] args) {
         String input = "GEEKSFORGEEKS";
-        System.out.println("Longest Palindrome Subsequence: " + CORE_lcpSubSequence(input, input.length(), 0, input.length() - 1));
+        System.out.println("Longest Palindrome Subsequence: " + lps(input, input.length(), 0, input.length() - 1));
     }
 
-    public static int CORE_lcpSubSequence(final String s,
-                                          final int len,
-                                          int iStart,
-                                          int iEnd) {
+    public static int lps(final String s,
+                          final int len,
+                          int iStart,
+                          int iEnd) {
         // BASE case-- VALIDATIONS >>> No palindrome could exist further ( reached adjacent pos, iStart reached end, iEnd reached start)
         if (iStart > iEnd || iStart == len || iEnd == -1) {
             return 0;
@@ -36,11 +36,10 @@ public class ARRAY_LongestPalindromeSubsequence {
         // CHOOSE between 3 choices( 1 + 2 ) since its Sub-SEQUENCE problem.
         // CHOICE 1 -- Matched
         if (s.charAt(iStart) == s.charAt(iEnd)) {
-            CORE_lcpSubSequence(s, len, iStart + 1, iEnd - 1);
-            return 2 + CORE_lcpSubSequence(s, len, iStart + 1, iEnd - 1); // IMPORTANT--Increase by 2 (not by 1 :-) )
+            return 2 + lps(s, len, iStart + 1, iEnd - 1); // IMPORTANT--Increase by 2 (not by 1 :-) )
         } else {
-            return Math.max(CORE_lcpSubSequence(s, len, iStart, iEnd - 1),
-                    CORE_lcpSubSequence(s, len, iStart + 1, iEnd));
+            return Math.max(lps(s, len, iStart, iEnd - 1),
+                    lps(s, len, iStart + 1, iEnd));
         }
     }
 
