@@ -521,7 +521,8 @@ Todo
 
 ##### Uniqueness
 
-- Typical question-- Find Permutations (Not combinations).. Types:
+- Typical question: Find Permutations (Not combinations)
+- Types:
     - Decision ==> ```See if``` solution exist
     - Optimization ==> ```Find Optimal``` Solution (Any)
     - Enumeration ==> ```List all``` the solutions
@@ -572,20 +573,29 @@ class GFG {
 
 ##### Known Problems (Remember list)
 
-1. Chess N Queen (2D)
-2. Rat in maze  (2D)
-3. Chess Knight tour (2D)
-4. Combination Sum
-5. Suduko
-4. Palindrome Partitioning
-5. Work Break
-6. All subsets (1D)
-7. All permutations of string (1D)
-8. All permutations of Phone Letter digits (1D)
-9. M-coloring problem (Graph)
-10. Longest Possible Route in a Matrix with Hurdles (HARD-- Interesting problem)
-11. Partition of a set into K subsets with equal sum
-12. Print all longest common sub-sequences in lexicographical order ( HARD-- Why not DP ?)
+Maze:
+
+- Longest Possible Route in a Matrix with Hurdles
+- Rat in maze
+- Chess N Queen
+- Chess Knight tour
+- Suduko
+- Work Break
+
+Arrays:
+
+- Partition of a set into K subsets with equal sum
+- Combination Sum
+- Palindrome Partitioning
+- All subsets
+- All permutations of string
+- All permutations of Phone Letter digits
+
+Graph:
+
+- M-coloring problem
+- Find hamilton Cycles (If exist, count and print all)
+- Print all longest common sub-sequences in lexicographical order
 
 ---
 
