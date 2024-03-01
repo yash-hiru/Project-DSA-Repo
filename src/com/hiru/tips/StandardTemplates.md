@@ -7,9 +7,7 @@ names.
 
 Identifying the right category saves time, gives us skeleton and also boost confidence since end to end code is ready.
 
-### How to approach
-
-#### Groundwork
+### Groundwork
 
 1. Read problem carefully
 
@@ -19,7 +17,7 @@ Identifying the right category saves time, gives us skeleton and also boost conf
 
 4. Identify the multiple entities and relationships
 
-#### Find matching category (For optimal solution you propose and buy in)
+### Find matching category (For optimal solution you propose and buy in)
 
 1. Translate problem into simpler words (remove unncessary confusing context)
 
@@ -28,28 +26,25 @@ Identifying the right category saves time, gives us skeleton and also boost conf
 3. Once you confirm the category of the problem, **implement generic outline/template**  with TODOs within **no more
    than 5 mins**.
 
-#### How this is useful ?
+### How this is useful ?
 
-1. Helps to avoid unncessary struggle, embarrasement and hence time wastage during tight timelines (45 mins coding
-   round)
+1. Avoid unncessary struggle, embarrasement and saves time
 
-2. Sets premise for further changes from generic to specific
+2. Sets premise for discussion viz. time complexity.
 
-3. Sets premise of time complexity and space complexity discussions
+4. Boost confidence throughout interview due to ready layout.
 
-4. Boost confidence throughout interview
+5. Quickly demonstrates your strong analytical, coding, DSA skills.
 
-5. Reflects your strong analytical, coding, DSA skills
-
-6. Gives more insights into DELTA changes required to solve given specific problem with minor tweaks.
-
-## ===================== Themes =====================
+6. Makes easier to make incremental changes on top of standard template algo.
 
 ---
 
-### Dynamic Programming: 0-1 Knapsack (Sequencial Flows)
+## ===================== Themes =====================
 
-##### Unique Patterns
+### ******** THEME 1:  DP -->  0-1 Knapsack  ********
+
+##### Uniqueness
 
 1. Find **Min , Max** , **Count** (Combinations ...Not permutations) or **exists**  outcome with given constraints
 
@@ -69,44 +64,26 @@ Identifying the right category saves time, gives us skeleton and also boost conf
 
 Similar problems of **0/1 knapsack** (N, wt [], val[], W)
 
-- **Inputs, Constraints, Objective >>>>**:
-
-    - **Num items:** N
-
-    - **Available Options** ( wt[N] )
-
-    - **Available Values** (val[N])
-
-    - **Constraint(s)** : W is max weight of knapsack
-
-    - **Objective:** MAX (profit)
-
-- **Choices >>>>**
-
-    - Choose/Dont Choose
-
+- Inputs, Constraints, Objective
+    - Num items: N
+    - Available Options ( wt[N] )
+    - **Available Values (val[N])
+    - Constraint(s) : W is max weight of knapsack
+    - Objective: MAX (profit)
+- Choices
+    - IF NO REPEATATIONS -->  Choose/Dont Choose
+    - IF REPEATATIONS --> FOR(options)
     - Aggregate ( current state, [subproblem1, subproblem 2...])
-
-- **Variable Arguments >>>>**
-
+- Variable Arguments
     - i ++
-
     - W - wt[i]
-
-- **States >>>>**
-
+- States
     - Initial State: i== 0
-
     - Next State: i = i+1
-
     - Final State: Valid / Invalid
-
-- **Base Condition >>>>**
-
+- Base Condition
     - SAD --- If W exceeding after adding i
-
     - HAPPY --- W matches after adding i
-
     - HAPPY --- No more weights and W is still not filled
 
 ##### Examples
@@ -120,35 +97,35 @@ Similar problems of **0/1 knapsack** (N, wt [], val[], W)
 | 5.    | **Cut Road to get Max profit**                                    | rod[N]   | **rod[i]**               | rod[N]        | **Yes** | **FOR** (options) | **N**        | **MAX**(subproblems)  | rod[N-1]                              |
 | 6.    | Palindrome Partitioning- Find MIN number of palindrome partitions |          |                          |               |         |                   |              |                       |                                       |
 
-##### Points to ponder !!!
+##### Common Mistakes
 
-- **Index Handling:**
+- Index Handling:
     - Avoid overflows wherever you are ++ or -- index
     - Base conditions for bound checks
     - FOR OPTIONS EXPLORATION LOOPS: Pay attention to conditions, Start value for ( j= i+1)
-- **Base conditions beyond bounds checks**:
+- Base conditions beyond bounds checks:
     - Add other base conditions beyond just bound check - e.g. invalid W in knapsack,
-- **Datatype and Overflows**
+- Datatype and Overflows:
     - Choose long for int+int
     - MAX-1 value before incrementing it by 1. Or check overflow before it occurs.
     - Avoid overflow for INVALID state returns.
-- **Memo:**
+- Memo:
     - Pass memo to recursive calls
     - Pay attention to choose between 2D vs 1D.
     - Initialize it with EXTRA (+1) dimension.
     - Choose correct ( -1 if possible) INITIAL VALUE.
     - Add READ block before recursion. WRITE block inside FOR loop or A/B choices.
     - Check MAX_VALUE/ MIN_VALUE after read to avoid overflow
-- **IF-Else vs IF type of choices**
+- IF-Else vs IF type of choices:
     - Subsequnce -- C1 or MAX(C2,C3)
     - Substring -- MAX(C1,C2, C3)
-- **Avoid simplification of conditions/base cases**
+- Avoid simplification of conditions/base cases:
     - Ok to have redudency than missing any case in the process of over-simplification/coolness
     - OK to add separate if for separate case since return value per IF block could vary
 
 ##### Implementation
 
-**0/1 Knapsack**
+1. 0/1 Knapsack
 
 ```java
 class GFG {
@@ -191,8 +168,7 @@ class GFG {
 }
 ```
 
-**Min Cuts Palindrome Partitioning**
-(IMPT-- MUST remember this)
+2. Min Cuts Palindrome Partitioning (Complex Variant of Knapsack..MUST REMEMBER)
 
 ```java
 class GFG {
@@ -222,9 +198,9 @@ class GFG {
 
 ---
 
-### Theme2:  Dynamic Programming Longest INCREASING Sub-sequence/Palindrome/Maze Path/Edit Distance
+### ******** THEME 2:  DP -->  SubSequence, Palindrome, EditDist, Jumps,  ********
 
-##### Unique Patterns
+##### Uniqueness
 
 1. Min/Max/Longest/Smallest or count objectives
 2. String/Array as inputs
@@ -233,33 +209,31 @@ class GFG {
 
 ##### Time Complexity
 
-1. **Exponential** with O(1) space ==> **O (K^N)**
-
-2. **Linear** or **quadratic** with extra O(N) or O(NxM) space ===> **O(N^K) ** k =1,2
+Same as knapsack.
 
 ##### Examples
 
-- Longest Increasing SubSequence (2 choice)
+1. Longest Increasing SubSequence (2 choice)
     - Match vs NoMatch ```MAX [1+(i+1), (i+1)]```
-- Longest Common Subsequence (1 vs 2 choices)
+2. Longest Common Subsequence (1 vs 2 choices)
     - Match ```1 +(i+1, j+1)```
     - NoMatch ```MAX [(i, j+1), (i+1, j)]```
-- Longest Common STRING (3 vs 2 choices)
+3. Longest Common STRING (3 vs 2 choices)
     - Match ```MAX [1 +(i+1, j+1),  (i+1, j),  (i, j+1)]```
     - NoMatch ```MAX [(i+1, j),  (i, j+1)]```
-- Longest Palindrome Subsequence (1 vs 2 choices)
+4. Longest Palindrome Subsequence (1 vs 2 choices)
     - Match ```2 +(i+1, j-1) ```
     - NoMatch ```MAX [(i+1, j-1),  (i, j-1)]```
-- Longest Palindrome SubSTRING (3 vs 2 choices)
+5. Longest Palindrome SubSTRING (3 vs 2 choices)
     - Match ```MAX [2 +(i+1, j-1),  (i+1, j-1),  (i, j-1)]```
     - NoMatch ```MAX [ (i+1, j-1),  (i, j-1)]```
-- Edit distance ( 1 vs 3 choices)
+6. Edit distance ( 1 vs 3 choices)
     - Match```0+(i+1, j+1)```
     - NoMatch```MAX [(i+1, j+1) (i+1, j) (i, j+1)]```
 
 ##### Implementation
 
-**Longest Palindrome Sub-STRING**
+1. Longest Palindrome Sub-STRING (Special)
 
 ```java
 package com.hiru;
@@ -309,15 +283,13 @@ public class DeleteMe {
 
 ```
 
-### Backtracking Patterns (Arrays)
+---
 
-### Maze Patterns (Arrays)
+### ******** THEME 3: Graph --> Traversals ********
 
-### Graph Patterns
+##### 1. BFS (directed and undirected)
 
-##### BFS (directed and undirected)
-
-**Points to Ponder**
+[Points to Ponder ]:
 
 - Representation:
 
@@ -337,9 +309,9 @@ class GFG {
     - ```LinkedList<Integer>``` as Queue
     - Useful methods: ```isEmtpty``` , ```add``` and ```poll```
 
-**Implementation**
+[Implementation]
 
-- Directed and Undirected BFS appraoches
+1. Directed and Undirected BFS appraoches
 
 ```java
 class GFG {
@@ -417,4 +389,146 @@ class GFG {
 }
 ```
 
-### BST Patterns
+##### 2. Graph Paths and Connectivity
+
+1. Transitive Closure: (Adj Matrix way)
+
+```java
+class Graph {
+    /**
+     * Time complexity -- O(N3) 
+     */
+    int[][] transitiveClosure() {
+        int reach[][] = new int[V][V]; // Adjacency Matrix
+        // then make sure that the value of reach[i][j] is 1
+        for (int i = 0; i < V; i++) {
+            for (int j = 0; j < V; j++) {
+                for (int j = 0; j < V; j++) {
+                    // Important -- Transitive connectivity/Path
+                    reach[i][j] =
+                            (reach[i][j] != 0) ||
+                                    ((reach[i][k] != 0) && (reach[k][j] != 0)) ? 1 : 0;
+                }
+            }
+        }
+        return reach; // return transitive closure
+    }
+}
+
+```
+
+2. Find Connected Components/Islands in Undirected Graph
+
+```java
+class GFG {
+    /**
+     * Find Number of Islands in Maze/Grid/Graph
+     * @param maze
+     * @return num islands
+     */
+    int getNumIslands(int[][] maze) {
+        int numberOfIslands = 0;
+        // For each Vertex (i,j)
+        for (int i = 0; i < maze.length; i++) {
+            for (int j = 0; j < maze.length; j++) {
+                if (maze[i][j] == 1 && visited[i][j] == false) {
+                    // DO BFS/DFS ( Explore U-D-L-R for maze and adj for graph)
+                    BFS(maze, i, j); // (OR DFS would also work)
+                }
+            }
+        }
+    }
+}
+
+```
+
+3. Detect Cycle in graph
+
+```java
+class GFG {
+    /**
+     * Check cycles originating from ALL nodes DFS way
+     * @return
+     */
+    boolean isCyclic() {
+        // STEP 1 >>> Intialize Boolean OBJECT array for visited node tracking
+        Boolean visited[] = new Boolean[V]; // Pass by reference
+        for (int i = 0; i < V; i++)
+            visited[i] = false;
+
+        // STEP 2 >>> Call the recursive helper function to detect cycle in different DFS trees
+        for (int u = 0; u < V; u++) {
+            // STEP 3 >>> Don't recur for u if already visited
+            if (!visited[u])
+                if (isCyclicUtil(u, visited, -1))
+                    return true; // STEP 4 >>> Return true if we find cycle in this subtree 
+        }
+        return false; // STEP 5: Return false if we DID NOT find ANY cycle from ANY node
+    }
+
+    //////////////////////////////////////////////////////////////////
+
+    /**
+     * Detect cycle from each of the start node recursively
+     */
+    boolean isCyclicUtil(int v, Boolean visited[],
+                         int parent) {
+        // Mark the current node as visited
+        visited[v] = true;
+        Integer i;
+        // Recur for all the vertices adjacent to this vertex
+        Iterator<Integer> it = adj[v].iterator();
+        while (it.hasNext()) {
+            i = it.next();
+            // NON VISITED ADJ --> Recur 
+            if (!visited[i]) {
+                if (isCyclicUtil(i, visited, v))
+                    return true;
+            }
+            // VISITED ADJ -->  
+            else {
+                // If an adjacent is visited and not parent of current vertex, 
+                // then there is a cycle.
+                if (i != parent)
+                    return true;
+            }
+        }
+        return false;
+    }
+}
+
+```
+
+##### 3. Graph Topological Sorting
+
+Todo
+
+##### 4. Graph Flows/Fills
+
+Todo
+
+##### 5. Graph Minimum Spanning Tree
+
+Todo
+
+##### 6. Graph Coloring
+
+Todo
+
+---
+
+### ******** THEME 4. Backtracking ********
+
+---
+
+### ******** THEME 5. Trees ********
+
+---
+
+### ******** THEME 6. Maze ********
+
+---
+
+### ******** THEME 7. OTHER/Misc ********
+
+---
