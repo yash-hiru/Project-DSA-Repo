@@ -1,47 +1,43 @@
 package com.hiru;
 
-import java.util.Arrays;
-
-import static java.lang.Integer.MAX_VALUE;
-
 public class DeleteMe {
     public static void main(String args[]) {
-        int[] memo = new int[12];
-        Arrays.fill(memo, -1);
-        System.out.println(minJumps(new int[]{1, 3, 5, 8, 9, 2, 6, 7, 6, 8, 9}, 0, memo));
+        String str = "ZZAABAACFRTACA";
+        //String str = "DDDAABAACRRRRRCZZ";
+        int[][] memo = new int[str.length()][str.length()];
+        System.out.println(longestPalindromeString(str, 0, str.length() - 1, memo));
         return;
     }
 
-    static int minJumps(int[] arr, int i, int[] memo) {
-        // Base cases
-        if (i >= arr.length) {
-            return Integer.MAX_VALUE; //Invalid State
+    static int longestPalindromeString(String str, int s, int e, int[][] memo) {
+        if (e < s || s == str.length() || e == -1) {
+            return 0; // No palindrome further
         }
-        if (i == arr.length - 1) {
-            // No jumps are possible further
-            return 0; // Valid State
+
+        if (e == s) {
+            // Odd palindrome mid
+            memo[s][e] = 1;
+            return memo[s][e];
         }
-        // Not end state--Solve further
-        // Optimization -- MEMO read
-        if (memo[i] != -1) {
-            return memo[i];
-        }
-        // Recursive subproblems
-        int range = arr[i]; // Options
-        int jumps = Integer.MAX_VALUE; // Solution
-        // Explore options
-        for (int j = i + 1; j <= i + range; j++) {
-            // Valid next position/index (Make a choice)
-            if (j <= arr.length - 1) {
-                memo[j] = minJumps(arr, j, memo); // MEMOIZE- Write
-                // Jump and count jump. Check if sub-problem did NOT lead to INVALID state
-                // Ignore invalid state returns
-                if (memo[j] < MAX_VALUE) {
-                    jumps = Math.min(jumps, 1 + memo[j]); // 1 Valid jump for possible next state
-                }
+
+        // Explore choices
+        int sol1 = -2, sol2 = -1, sol3 = -1;
+        if (str.charAt(s) == str.charAt(e)) {
+            if (s + 1 < str.length() && e - 1 >= 0) {
+                sol1 = memo[s + 1][e - 1] = 2 + longestPalindromeString(str, s + 1, e - 1, memo);
             }
         }
-        memo[i] = jumps;
-        return memo[i];
+        //Option2-3
+        if (s + 1 < str.length()) {
+            sol2 = memo[s + 1][e] = longestPalindromeString(str, s + 1, e, memo);
+        }
+        if (e - 1 >= 0) {
+            sol3 = memo[s][e - 1] = longestPalindromeString(str, s, e - 1, memo);
+        }
+
+        return Math.max(sol1,
+                Math.max(sol2,
+                        sol3)
+        );
     }
 }
