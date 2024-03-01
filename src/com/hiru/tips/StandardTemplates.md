@@ -285,21 +285,19 @@ public class DeleteMe {
 
 ---
 
-### ******** THEME 3: Graph --> Traversals ********
+### ******** THEME 3: Graphs ********
 
-##### 1. BFS (directed and undirected)
+##### THEME 3: Graph -->  BFS (directed and undirected)
 
-[Points to Ponder ]:
+*Points to Ponder:*
 
 - Representation:
-
-```java
-class GFG {
-    int V;
-    List<Integer>[] adj = new LinkedList<Integer>[V];
-}
-```
-
+  ```java
+  class GFG {
+      int V;
+      List<Integer>[] adj = new LinkedList<Integer>[V];
+  }
+  ```
 - For directed Graph:
     - Unlike tree BFS(which starts from root), Graph BFS does NOT gurantee cover all the vertices.
     - E.g. Starting from sink node with no outdegree will lead to BFS for only just that node
@@ -309,7 +307,7 @@ class GFG {
     - ```LinkedList<Integer>``` as Queue
     - Useful methods: ```isEmtpty``` , ```add``` and ```poll```
 
-[Implementation]
+Implementation:
 
 1. Directed and Undirected BFS appraoches
 
@@ -389,7 +387,9 @@ class GFG {
 }
 ```
 
-##### 2. Graph Paths and Connectivity
+##### THEME 3: Graph -->  Paths and Connectivity
+
+Implementations:
 
 1. Transitive Closure: (Adj Matrix way)
 
@@ -499,19 +499,19 @@ class GFG {
 
 ```
 
-##### 3. Graph Topological Sorting
+##### THEME 3: Graph -->  Topological Sorting
 
 Todo
 
-##### 4. Graph Flows/Fills
+##### THEME 3: Graph -->  Flows/Fills
 
 Todo
 
-##### 5. Graph Minimum Spanning Tree
+##### THEME 3: Graph -->  Minimum Spanning Tree
 
 Todo
 
-##### 6. Graph Coloring
+##### THEME 3: Graph -->  Coloring
 
 Todo
 
