@@ -315,8 +315,106 @@ public class DeleteMe {
 
 ### Graph Patterns
 
-#### BFS Skeleton
+##### BFS (directed and undirected)
 
-#### DFS Skeleton
+**Points to Ponder**
+
+- Representation:
+
+```java
+class GFG {
+    int V;
+    List<Integer>[] adj = new LinkedList<Integer>[V];
+}
+```
+
+- For directed Graph:
+    - Unlike tree BFS(which starts from root), Graph BFS does NOT gurantee cover all the vertices.
+    - E.g. Starting from sink node with no outdegree will lead to BFS for only just that node
+- For Undirected Graph:
+    - Start from all the unvisited nodes if there are more than one components (islands)
+- Queue:
+    - ```LinkedList<Integer>``` as Queue
+    - Useful methods: ```isEmtpty``` , ```add``` and ```poll```
+
+**Implementation**
+
+- Directed and Undirected BFS appraoches
+
+```java
+class GFG {
+
+    /**
+     * BFS for any DIRECTED graph..Even Null Graph too.
+     * UTIL method ==> allVisited(visited)) returns -1 if ALL visited or return any unvisited node index.
+     *
+     * @param V Number of Nodes of graph
+     * @param adj List<Integer> [] adjacency List of graph
+     */
+    static void bfsForDirected(int V, LinkedList<Integer>[] adj) {
+        LinkedList<Integer> queue = new LinkedList<>();
+        boolean visited[] = new boolean[V];
+
+        // Unlike tree BFS(which starts from root), Graph BFS does NOT gurantee cover all the vertices.
+        // E.g. Starting from sink node with no outdegree will lead to BFS for only just that node
+        // Hence its extremely important to visit ALL the nodes BFS way UNTIL ALL are VISITED.
+        int unvisited = 0;
+        // -1 indicates that all nodes visited. Exit Main BFS
+        while ((unvisited = allVisited(visited)) != -1) {
+            // STEP: 1 >>>> PIck unvisited Node
+            // STEP 2 >>>> BFS for unvisited node
+            // STEP 3 >> Visit Node and Start local BFS by queuing it
+            visited[unvisited] = true;
+            queue.add(unvisited);
+
+            //STEP 4 >>>> LOCAL BFS  >> Explore Adjacencies and add them to the queue and process all the
+            System.out.println("Local BFS for : " + unvisited);
+            while (queue.isEmpty() == false) {
+                int u = queue.poll();
+                System.out.println(u);
+                //STEP 4.1 >>>> Loop through adjancent nodes of u
+                for (int v : adj[u]) {
+                    //STEP 4.2 >>>> Visit and add unvisited nodes.
+                    if (visited[v] == false) {
+                        visited[v] = true;
+                        queue.add(v);
+                    }
+                }
+            }
+        }
+    }
+
+
+    /**
+     * BFS for any CONNECTED UNDIRECTED graph. (Single component)
+     *
+     * @param V Number of Nodes of graph
+     * @param adj List<Integer> [] adjacency List of graph
+     */
+    static void bfs(int V, LinkedList<Integer>[] adj) {
+        LinkedList<Integer> queue = new LinkedList<>();
+        boolean visited[] = new boolean[V];
+
+        // Start from ANY vertex since its UNDIRECTED CONNECTED graph.
+        int startVertex = 3;
+        visited[startVertex] = true;
+        queue.add(startVertex);
+
+        // BFS  >> Explore Adjacencies and add them to the queue and process all the
+        while (queue.isEmpty() == false) {
+            int u = queue.poll();
+            System.out.println(u);
+            //STEP 4.1 >>>> Loop through adjancent nodes of u
+            for (int v : adj[u]) {
+                //STEP 4.2 >>>> Visit and add unvisited nodes.
+                if (visited[v] == false) {
+                    visited[v] = true;
+                    queue.add(v);
+                }
+            }
+        }
+    }
+}
+```
 
 ### BST Patterns
