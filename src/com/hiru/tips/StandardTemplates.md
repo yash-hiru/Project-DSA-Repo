@@ -519,16 +519,114 @@ Todo
 
 ### ******** THEME 4. Backtracking ********
 
+##### Uniqueness
+
+- Typical question-- Find Permutations (Not combinations).. Types:
+    - Decision ==> ```See if``` solution exist
+    - Optimization ==> ```Find Optimal``` Solution (Any)
+    - Enumeration ==> ```List all``` the solutions
+- Not solvable by DP and greedy
+- Incrementatlly build candidate using DFS and take following decision on partial candidate
+    - SUCCESS (Found Solution-Leaf node)
+    - ABANDON (Backtrack)
+- Aka. Optimal Brute force
+
+##### Time Complexity
+
+- DP < Backtracking < BruteForce
+- O(N^k) **<** O(k^N) / O(N!) **<** O(N^N)
+
+##### General Outline (Pseudocode)
+
+```java
+class GFG {
+    void FIND_SOLUTIONS(CURRENT_STATE, IN_OUT_PARAMETERS) {
+        //---------------- Exit case or base case
+        if (VALID_SOLUTION(IN_OUT_PARAMETERS)) {
+            // --- Some recursive path ends to DESIRED STATE
+            STORE / RETURN True
+            return;
+        }
+        //---------------- Iterate over all the choices
+        for (CHOICE in ALL_CHOICES) {
+            // Filter out valid choice before recursive call for next state 
+            if (VALID(CHOICE)) {
+                //----- We have found some valid choice for next state (phase)
+                APPLY(CURRENT_STATE, CHOICE);
+                //----- Confirm this choice assuming next state would lead to final solution
+                FIND_SOLUTIONS(NEXT_STATE, IN_OUT_PARAMETERS);
+                //----- Desicion Problem: Return immediately if we know at least 1 solution was found.
+                //----- Backtrack if we dont see next state leading to the solution
+                // [***Optinal IF***] -- Not applicable for lets say subsets
+                if (IF subproblem lead to INVALID/UNDESIRED state){
+                    // ----- Abandon the subproblem 
+                    // ----- we undo certain assignments of values to variables to reassign them to other possible values, see if those lead to a valid solution.
+                    BACKTRACK(remove(CURRENT_STATE, CHOICE))
+                    return;
+                }
+            }
+        }
+    }
+}
+```
+
+##### Known Problems (Remember list)
+
+1. Chess N Queen (2D)
+2. Rat in maze  (2D)
+3. Chess Knight tour (2D)
+4. Combination Sum
+5. Suduko
+4. Palindrome Partitioning
+5. Work Break
+6. All subsets (1D)
+7. All permutations of string (1D)
+8. All permutations of Phone Letter digits (1D)
+9. M-coloring problem (Graph)
+10. Longest Possible Route in a Matrix with Hurdles (HARD-- Interesting problem)
+11. Partition of a set into K subsets with equal sum
+12. Print all longest common sub-sequences in lexicographical order ( HARD-- Why not DP ?)
+
 ---
 
 ### ******** THEME 5. Trees ********
 
+##### BST
+
+- Use recursion
+- InOrder, PreOrder, PostOrder DFS
+- BFS using queue.
+- Decisions==> based on input and output returned by subtree calls
+- Pass parameters by val/ref to children calls
+- Split problems into parts (e.g. Border traversal)
+
+##### BT
+
+- Traverse using recursive DFS or queue based BFS.
+- Decisions==> based on input and output returned by subtree calls
+- Pass parameters by val/ref to children calls
+- Split problems into parts (e.g. Border traversal)
+
+##### TRIE
+
+- Distinct element finding
+- Optimal lookup
+- Node Structure:
+    ```java
+    class Node {
+        Node[] keys = new Node[26]; //Alphabets    
+    }
+- ```ch = str.charAt(i)``` <-->  ```trieLevel(i).key[ch-'a']```
+
+##### Heap
+
+- Array implementation is common
+- ```iLeftChild = 2*iParent + 1``` and ```iRightChild = 2*iParent*2```
+- ```iParent = floor(iChild/2)```
+- Min-Max heap types
+- Common use cases:
+    - min+max heap for median of infinite stream
+    - Heap for K-largest
+
 ---
 
-### ******** THEME 6. Maze ********
-
----
-
-### ******** THEME 7. OTHER/Misc ********
-
----

@@ -69,33 +69,35 @@
 ----
 
 ```java
-void FIND_SOLUTIONS(CURRENT_STATE,IN_OUT_PARAMETERS):
+class GFG {
+    void FIND_SOLUTIONS(CURRENT_STATE, IN_OUT_PARAMETERS) {
         //---------------- Exit case or base case
-        if(VALID_SOLUTION(IN_OUT_PARAMETERS)):
-        // --- Some recursive path ends to DESIRED STATE
-        STORE THE SOLUTION
-        return
+        if (VALID_SOLUTION(IN_OUT_PARAMETERS)) {
+            // --- Some recursive path ends to DESIRED STATE
+            STORE THE SOLUTION
+            return;
+        }
+
         //---------------- Iterate over all the choices
-        for(CHOICE:ALL_CHOICES):
-        // Filter out valid choice before recursive call for next state 
-        if(VALID(CHOICE)):
-
-        //----- We have found some valid choice for next state (phase)
-
-        APPLY(CURRENT_STATE,CHOICE)
-
-        //----- Confirm this choice assuming next state would lead to final solution
-
-        FIND_SOLUTIONS(NEXT_STATE,IN_OUT_PARAMETERS)
-
-        //----- Desicion Problem: Return immediately if we know at least 1 solution was found.
-
-        //----- Backtrack if we dont see next state leading to the solution
-        if(PARAM STATUS or RETURN VALUE is FALSE):
-        // ----- Dont backtrack for valid solution path 
-        // ----- we undo certain assignments of values to variables to reassign them to other possible values, see if those lead to a valid solution.
-        BACKTRACK(remove(CURRENT_STATE,CHOICE))
-        return
+        for (CHOICE in ALL_CHOICES) {
+            // Filter out valid choice before recursive call for next state 
+            if (VALID(CHOICE)) {
+                //----- We have found some valid choice for next state (phase)
+                APPLY(CURRENT_STATE, CHOICE);
+                //----- Confirm this choice assuming next state would lead to final solution
+                FIND_SOLUTIONS(NEXT_STATE, IN_OUT_PARAMETERS);
+                //----- Desicion Problem: Return immediately if we know at least 1 solution was found.
+                //----- Backtrack if we dont see next state leading to the solution
+                if (PARAM STATUS or RETURN VALUE is FALSE){
+                    // ----- Dont backtrack for valid solution path 
+                    // ----- we undo certain assignments of values to variables to reassign them to other possible values, see if those lead to a valid solution.
+                    BACKTRACK(remove(CURRENT_STATE, CHOICE))
+                    return;
+                }
+            }
+        }
+    }
+}
 ```
 
 ### Must Do Backtracking Problems
