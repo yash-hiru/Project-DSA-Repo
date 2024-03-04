@@ -1,6 +1,10 @@
-package com.hiru;
+package com.hiru.practiceOnline.orcl;
 
-public class DeleteMe {
+/**
+ * Problem1: Assign delievery to client
+ * Problem2: This one (coding)
+ */
+public class OrcR1Perc {
     public static void main(String args[]) {
         int[][] grid = new int[4][4];
         grid[0] = new int[]{0, 1, 1, 0};
