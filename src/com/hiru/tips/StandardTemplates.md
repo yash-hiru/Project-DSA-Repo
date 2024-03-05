@@ -1,3 +1,5 @@
+<span style="color:blue">
+
 ## ============= Common Coding Patterns ==============
 
 ### Background
