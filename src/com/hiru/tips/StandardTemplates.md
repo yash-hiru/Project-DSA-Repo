@@ -1,8 +1,7 @@
-<span style="color:blue">
+<span style="color:brown">
 
 ## ============= Common Coding Patterns ==============
 
-</span>
 ### Background
 
 Most of the problem belongs to some category or theme with minor tweaks viz. as Datatype, constraints, conditions,
@@ -643,3 +642,4 @@ Graph:
 
 ---
 
+</span>
