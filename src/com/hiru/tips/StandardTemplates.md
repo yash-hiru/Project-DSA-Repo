@@ -2,6 +2,7 @@
 
 ## ============= Common Coding Patterns ==============
 
+</span>
 ### Background
 
 Most of the problem belongs to some category or theme with minor tweaks viz. as Datatype, constraints, conditions,
