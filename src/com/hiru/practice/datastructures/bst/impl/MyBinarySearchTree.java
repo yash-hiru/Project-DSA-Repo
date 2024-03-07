@@ -10,11 +10,10 @@ import java.util.Map;
  */
 public class MyBinarySearchTree {
     //////////////////////// Fields
-    private MyNode root;
-    private int numberOfNodes = 0;
+    public MyNode root;
 
     // CTOR-Empty tree
-    MyBinarySearchTree() {
+    public MyBinarySearchTree() {
         root = null;
     }
 
@@ -32,6 +31,14 @@ public class MyBinarySearchTree {
         root = newRoot;
     }
 
+    /////////////// Operation -- InsertionMultiple
+    public void insertAll(int[] values) {
+        // Trigger recursive call
+        for (Integer val : values) {
+            insert(val);
+        }
+    }
+
     /////////////// Operation -- Insertion (Public outer and inner recursive APIs)////////////////////
     public void insert(final int value) {
         // Trigger recursive call
@@ -42,8 +49,8 @@ public class MyBinarySearchTree {
         // Input validation viz Null check etc. will go here
         // case1: Empty Tree
         if (root == null) {
-            root = new MyNode(value);
-            return root;
+            this.root = new MyNode(value);
+            return this.root;
         }
         // Case2: Left is NULL and element is less than root
         else if (value < root.getData()) {

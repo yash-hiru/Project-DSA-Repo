@@ -12,4 +12,5 @@
 7. [TODO] Longest Increasing subsequence
 8. [TODO] [TODO--Special case--30 mins] Minimum palindrome Partitioning
 9. Final Notes for DP -arrays (Include Jumping solution)
+10. LCS (10 mins)
 

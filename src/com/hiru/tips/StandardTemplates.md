@@ -2,24 +2,23 @@
 
 ## ============= Common Coding Patterns ==============
 
-### Background
+### Coding Tips
 
 Most of the problem belongs to some category or theme with minor tweaks viz. as Datatype, constraints, conditions,
 names.
 
 Identifying the right category saves time, gives us skeleton and also boost confidence since end to end code is ready.
 
-### Groundwork
+### PROBLEM UNDERSTANDING AND RESEMBLANCE (3-5 Mins)
 
-1. Read problem carefully
+- Understand Problem by asking clarification questions
+- Clarify assumptions
+- Write examples..Don't get coaching..Be self driven
+- Think a loud
+- Objective and to the point answers.
+- 45 mins time is precious..DONT waste on irrelevant discussions.
 
-2. Identify datatype ( simpler is better)
-
-3. Pefer simpler datatypes
-
-4. Identify the multiple entities and relationships
-
-### Find matching category (For optimal solution you propose and buy in)
+##### Find matching category (For optimal solution you propose and buy in)
 
 1. Translate problem into simpler words (remove unncessary confusing context)
 
@@ -28,7 +27,7 @@ Identifying the right category saves time, gives us skeleton and also boost conf
 3. Once you confirm the category of the problem, **implement generic outline/template**  with TODOs within **no more
    than 5 mins**.
 
-### How this is useful ?
+##### How this is useful ?
 
 1. Avoid unncessary struggle, embarrasement and saves time
 
@@ -39,6 +38,46 @@ Identifying the right category saves time, gives us skeleton and also boost conf
 5. Quickly demonstrates your strong analytical, coding, DSA skills.
 
 6. Makes easier to make incremental changes on top of standard template algo.
+
+#### DISCUSS APPROACH (SOLUTIONS) (5-10 mins)
+
+- DO discuss approaches with tradeoff
+- AVOID wasting time on over-communication and irrelevant details.  (e.g. discussing brute force appraoch in detail even
+  though optimal approach is there.)
+- BE CONFIDENT on PROPOSAL and GET BUY IN for OPTIMAL approach.
+- DO think on generalizing (e.g. taking K for fixed set of inputs than hardcoding them)
+- DO Trade offs with time-space complexities. Recurrent relation as applicable.
+- ```[Still keep possibility open for even further for further optimization.]```
+
+#### IMPLEMENTATION--- (15-20 Mins)
+
+- DO Implement agreed upon approach ONLY
+- DONT seek for hint
+- DONT miss edge case
+- WRITE Core working function than outline classes and other utilities.
+- DATA TYPE-- Int vs Long ( big size solutions), see if overflow/underflow etc.
+- Self Review
+- DON'T Read code while writing
+- CODE revision1 and THEN EXPLAIN -- Ask for 10 mins for coding if that works
+
+#### [Optional] REFACTORING(NICE to have)--- ( 10 mins)
+
+- Refactor (Initial function --> class --> Refactoring --> Assume TODOs)
+
+##### DRY RUN (5-10 mins)
+
+- DRYRUN implementation
+- FIX edge cases, bugs etc. without any help
+
+### Groundwork
+
+1. Read problem carefully
+
+2. Identify datatype ( simpler is better)
+
+3. Pefer simpler datatypes
+
+4. Identify the multiple entities and relationships
 
 ---
 

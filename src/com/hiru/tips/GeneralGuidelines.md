@@ -46,7 +46,7 @@
 
 - Refactor (Initial function --> class --> Refactoring --> Assume TODOs)
 
-##### DRY RUN (5-10 mins)
+#### DRY RUN (5-10 mins)
 
 - DRYRUN implementation
 - FIX edge cases, bugs etc. without any help
