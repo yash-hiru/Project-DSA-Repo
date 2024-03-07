@@ -1,15 +1,15 @@
 <span style="color:brown">
 
-## ============= Common Coding Patterns ==============
+## 1. Coding Tips
 
-### Coding Tips
+#### Coding Tips
 
 Most of the problem belongs to some category or theme with minor tweaks viz. as Datatype, constraints, conditions,
 names.
 
 Identifying the right category saves time, gives us skeleton and also boost confidence since end to end code is ready.
 
-### PROBLEM UNDERSTANDING AND RESEMBLANCE (3-5 Mins)
+#### Problem Understanding and Finding Pattern
 
 - Understand Problem by asking clarification questions
 - Clarify assumptions
@@ -18,7 +18,7 @@ Identifying the right category saves time, gives us skeleton and also boost conf
 - Objective and to the point answers.
 - 45 mins time is precious..DONT waste on irrelevant discussions.
 
-##### Find matching category (For optimal solution you propose and buy in)
+#### Get Buy in for one of the multiple proposed appraoches
 
 1. Translate problem into simpler words (remove unncessary confusing context)
 
@@ -27,7 +27,7 @@ Identifying the right category saves time, gives us skeleton and also boost conf
 3. Once you confirm the category of the problem, **implement generic outline/template**  with TODOs within **no more
    than 5 mins**.
 
-##### How this is useful ?
+#### Why this way ?
 
 1. Avoid unncessary struggle, embarrasement and saves time
 
@@ -39,53 +39,48 @@ Identifying the right category saves time, gives us skeleton and also boost conf
 
 6. Makes easier to make incremental changes on top of standard template algo.
 
-#### DISCUSS APPROACH (SOLUTIONS) (5-10 mins)
+#### During Coding Interview (45- 60 mins)
 
-- DO discuss approaches with tradeoff
-- AVOID wasting time on over-communication and irrelevant details.  (e.g. discussing brute force appraoch in detail even
-  though optimal approach is there.)
+**Time Management**
+
+```
+[5 mins] Intro
+[5 mins] Read
+[10 mins] Discuss, Think Loud, Small Examples
+[5 mins] Suggest approaches, Propose and get consensus on Optimal one
+[15 mins --Google] [30 mins --Others] Implement at lightning speed(CRUICIAL)
+[5 mins] Review, Edge cases, Other suggestions
+[5 mins] Read
+
+```
+
+**DOs**
+
+- Discuss approaches with tradeoff
 - BE CONFIDENT on PROPOSAL and GET BUY IN for OPTIMAL approach.
-- DO think on generalizing (e.g. taking K for fixed set of inputs than hardcoding them)
-- DO Trade offs with time-space complexities. Recurrent relation as applicable.
-- ```[Still keep possibility open for even further for further optimization.]```
+- Think on generalizing (e.g. taking K for fixed set of inputs than hardcoding them)
+- Trade offs with time-space complexities. Recurrent relation as applicable.
+- Implement ONLY agreed upon approach. (uniterrupted 10 mins)
+- Dryrun
+- Edge case checks
+- Discuss time and space complexity analysis
+- Scalable and other optimal approaches if any
 
-#### IMPLEMENTATION--- (15-20 Mins)
+**Strict DONTs**
 
-- DO Implement agreed upon approach ONLY
-- DONT seek for hint
-- DONT miss edge case
-- WRITE Core working function than outline classes and other utilities.
-- DATA TYPE-- Int vs Long ( big size solutions), see if overflow/underflow etc.
-- Self Review
-- DON'T Read code while writing
-- CODE revision1 and THEN EXPLAIN -- Ask for 10 mins for coding if that works
-
-#### [Optional] REFACTORING(NICE to have)--- ( 10 mins)
-
-- Refactor (Initial function --> class --> Refactoring --> Assume TODOs)
-
-##### DRY RUN (5-10 mins)
-
-- DRYRUN implementation
-- FIX edge cases, bugs etc. without any help
-
-### Groundwork
-
-1. Read problem carefully
-
-2. Identify datatype ( simpler is better)
-
-3. Pefer simpler datatypes
-
-4. Identify the multiple entities and relationships
+- DONT jump to coding WITHOUT consensus
+- DONT Waste time on over-communication
+- DONT add Code Comments, class and other framework( google)
+- DONT choose Long variable names
+- DONT Seek hints
+- DONT Miss Overflows and validation checks
+- DONT do early refactoring ( do it only if you have enough time)
 
 ---
 
-## ===================== Themes =====================
+## 1. Theme ==> Dynamic Programming (0-1 Knapsack)
 
-### ******** THEME 1:  DP -->  0-1 Knapsack  ********
-
-##### Uniqueness
+#### Uniqueness
 
 1. Find **Min , Max** , **Count** (Combinations ...Not permutations) or **exists**  outcome with given constraints
 
@@ -95,13 +90,13 @@ Identifying the right category saves time, gives us skeleton and also boost conf
 
 4. Optimal Substructure
 
-##### Time Complexity
+#### Time Complexity
 
 1. **Exponential** with O(1) space ==> **O (K^N)**
 
 2. **Linear** or **quadratic** with extra O(N) or O(NxM) space ===> **O(N^K) ** k =1,2
 
-##### Problem Description
+#### Problem Description
 
 Similar problems of **0/1 knapsack** (N, wt [], val[], W)
 
@@ -127,7 +122,7 @@ Similar problems of **0/1 knapsack** (N, wt [], val[], W)
     - HAPPY --- W matches after adding i
     - HAPPY --- No more weights and W is still not filled
 
-##### Examples
+#### Examples
 
 | Sr.No | Problem                                                           | Options  | Value (Impact Objective) | Constraints   | Repeat  | Options           | Num Children | Operator              | Base Case return value                |
 | ----- | ----------------------------------------------------------------- | -------- | ------------------------ | ------------- | ------- | ----------------- | ------------ | --------------------- | ------------------------------------- |
@@ -138,7 +133,7 @@ Similar problems of **0/1 knapsack** (N, wt [], val[], W)
 | 5.    | **Cut Road to get Max profit**                                    | rod[N]   | **rod[i]**               | rod[N]        | **Yes** | **FOR** (options) | **N**        | **MAX**(subproblems)  | rod[N-1]                              |
 | 6.    | Palindrome Partitioning- Find MIN number of palindrome partitions |          |                          |               |         |                   |              |                       |                                       |
 
-##### Common Mistakes
+#### Common Mistakes
 
 - Index Handling:
     - Avoid overflows wherever you are ++ or -- index
@@ -164,7 +159,7 @@ Similar problems of **0/1 knapsack** (N, wt [], val[], W)
     - Ok to have redudency than missing any case in the process of over-simplification/coolness
     - OK to add separate if for separate case since return value per IF block could vary
 
-##### Implementation
+#### Implementation
 
 1. 0/1 Knapsack
 
@@ -239,20 +234,20 @@ class GFG {
 
 ---
 
-### ******** THEME 2:  DP -->  SubSequence, Palindrome, EditDist, Jumps,  ********
+## 2. Theme ==> Dynamic Programming(SubSequence, Palindrome, EditDist, Jumps)
 
-##### Uniqueness
+#### Uniqueness
 
 1. Min/Max/Longest/Smallest or count objectives
 2. String/Array as inputs
 3. Index arithmetic with 2/3/4 choices
 4. Simpler than Knapsack BUT corner cases are tricky
 
-##### Time Complexity
+#### Time Complexity
 
 Same as knapsack.
 
-##### Examples
+#### Examples
 
 1. Longest Increasing SubSequence (2 choice)
     - Match vs NoMatch ```MAX [1+(i+1), (i+1)]```
@@ -272,7 +267,7 @@ Same as knapsack.
     - Match```0+(i+1, j+1)```
     - NoMatch```MAX [(i+1, j+1) (i+1, j) (i, j+1)]```
 
-##### Implementation
+#### Implementation
 
 1. Longest Palindrome Sub-STRING (Special)
 
@@ -326,11 +321,11 @@ public class DeleteMe {
 
 ---
 
-### ******** THEME 3: Graphs ********
+## 3. Theme ==> Graphs
 
-##### THEME 3: Graph -->  BFS (directed and undirected)
+#### ----- BFS (directed and undirected) -----
 
-*Points to Ponder:*
+**Points to Ponder:**
 
 - Representation:
   ```java
@@ -348,7 +343,7 @@ public class DeleteMe {
     - ```LinkedList<Integer>``` as Queue
     - Useful methods: ```isEmtpty``` , ```add``` and ```poll```
 
-Implementation:
+**Implementation:**
 
 1. Directed and Undirected BFS appraoches
 
@@ -428,9 +423,9 @@ class GFG {
 }
 ```
 
-##### THEME 3: Graph -->  Paths and Connectivity
+#### ----- Paths and Connectivity ----
 
-Implementations:
+**Implementations:**
 
 1. Transitive Closure: (Adj Matrix way)
 
@@ -540,27 +535,27 @@ class GFG {
 
 ```
 
-##### THEME 3: Graph -->  Topological Sorting
+#### ----- Topological Sorting -----
 
 Todo
 
-##### THEME 3: Graph -->  Flows/Fills
+#### ----- Flows and Fills -----
 
 Todo
 
-##### THEME 3: Graph -->  Minimum Spanning Tree
+#### ----- Spanning Trees, Connect Multiple, Shortest paths -----
 
 Todo
 
-##### THEME 3: Graph -->  Coloring
+#### ----- Coloring -----
 
 Todo
 
 ---
 
-### ******** THEME 4. Backtracking ********
+## 4. Theme ==> Algorithms (Backtracking)
 
-##### Uniqueness
+#### Uniqueness
 
 - Typical question: Find Permutations (Not combinations)
 - Types:
@@ -573,12 +568,12 @@ Todo
     - ABANDON (Backtrack)
 - Aka. Optimal Brute force
 
-##### Time Complexity
+#### Time Complexity
 
 - DP < Backtracking < BruteForce
 - O(N^k) **<** O(k^N) / O(N!) **<** O(N^N)
 
-##### General Outline (Pseudocode)
+#### General Outline (Pseudocode)
 
 ```java
 class GFG {
@@ -612,7 +607,7 @@ class GFG {
 }
 ```
 
-##### Known Problems (Remember list)
+#### Known Problems (Remember list)
 
 Maze:
 
@@ -640,35 +635,35 @@ Graph:
 
 ---
 
-### ******** THEME 5. Trees ********
+## 5. Theme ==> Data Structures (Trees)
 
-##### 1. Mode of Communication:
+#### 1. Mode of Communication:
 
 1. Return value from the child
 2. Passed value from parent and older ancestors
 3. IN/OUT parameter to keep track of node's path and state
 
-##### 2. Traversal (Choose it wisely):
+#### 2. Traversal (Choose it wisely):
 
 1. PreOrder: If you want to do Something "FIRST" before trying out left and right subtree
 2. Inorder: For sorting and L--R traversal
 3. Reverse Inorder -- For K largest Element
 4. PostOrder: If you want to explore LEFT and RIGHT and take decision for ROOT
 
-##### 3. Useful DataStructures:
+#### 3. Useful DataStructures:
 
 1. ArrayList or ArrayList<ArrayList> (Path tracking with backtracking technique)
 2. Stack: If you need to process the state in LIFO manner
 3. Queue: For level order traversal
 4. Multiple stacks: Zig zag
 
-##### 4. Nested traversals
+#### 4. Nested traversals
 
 **Yes** you would need in in most of the problems
 (if you want to take decision on PREVISITED subtree based on other subtree's/Parent's return state.)
 e.g. ```BST_BurnTree```
 
-##### 5. Interesting Problems
+#### 5. Interesting Problems
 
 * Burn Tree ([GFG Link](https://www.geeksforgeeks.org/burn-the-binary-tree-starting-from-the-target-node/amp/))
 
@@ -748,7 +743,7 @@ public class BST_BurnTree {
 
 ```
 
-##### BST
+#### BST
 
 - Use recursion
 - InOrder, PreOrder, PostOrder DFS
@@ -757,14 +752,14 @@ public class BST_BurnTree {
 - Pass parameters by val/ref to children calls
 - Split problems into parts (e.g. Border traversal)
 
-##### BT
+#### BT
 
 - Traverse using recursive DFS or queue based BFS.
 - Decisions==> based on input and output returned by subtree calls
 - Pass parameters by val/ref to children calls
 - Split problems into parts (e.g. Border traversal)
 
-##### TRIE
+#### TRIE
 
 - Distinct element finding
 - Optimal lookup
@@ -775,7 +770,7 @@ public class BST_BurnTree {
     }
 - ```ch = str.charAt(i)``` <-->  ```trieLevel(i).key[ch-'a']```
 
-##### Heap
+#### Heap
 
 - Array implementation is common
 - ```iLeftChild = 2*iParent + 1``` and ```iRightChild = 2*iParent*2```
