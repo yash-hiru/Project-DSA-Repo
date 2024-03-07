@@ -4,12 +4,12 @@ import com.hiru.practice.util.MyLogger;
 
 public class MyNode {
     // fields
-    private int data;
-    private MyNode left;
-    private MyNode right;
+    public int data;
+    public MyNode left;
+    public MyNode right;
 
     //Ctor
-    MyNode(final int val) {
+    public MyNode(final int val) {
         data = val;
     }
 

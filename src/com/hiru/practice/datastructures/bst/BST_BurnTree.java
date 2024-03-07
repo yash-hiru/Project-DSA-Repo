@@ -5,25 +5,14 @@ import com.hiru.practice.datastructures.bst.impl.MyNode;
 import com.hiru.practice.util.MyLogger;
 
 /**
- * ========================== BST TIPS ==========================
- * 1. Mode of Communication:
- * ...............1. Return value from the child
- * ...............2. Passed value from parent and older ancestors
- * ...............3. IN/OUT parameter to keep track of node's path and state
- * 2. Traversal (Choose it wisely):
- * ...............1. PreOrder: If you want to do Something "FIRST" before trying out left and right subtree
- * ...............2. Inorder: For sorting and L--R traversal
- * ...............3. Reverse Inorder -- For K largest Element
- * ...............4. PostOrder: If you want to explore LEFT and RIGHT and take decision for ROOT
- * 3. Useful DataStructures:
- * ...............1. ArrayList or ArrayList<ArrayList> (Path tracking with backtracking technique)
- * ...............2. Stack: If you need to process the state in LIFO manner
- * ...............3. Queue: For level order traversal
- * ...............4. Multiple stacks: Zig zag
- * 4. Nested traversals ?
- * ...............Yes, if you want to take decision on PREVISITED subtree based on other subtree's/Parent's return state.
- * ...............e.g. BST_BurnTree
- * ==============================================================
+ * PROBLEM: Burn the tree from target/Trigger Node
+ * Speciality ==> multiple traversal.. Act on the child return. Do special trversal for BURN
+ * GFG : https://www.geeksforgeeks.org/burn-the-binary-tree-starting-from-the-target-node/amp/
+ *
+ * SIMILAR PROBLEM: Find the kth distance nodes from target node
+ * GFG (https://www.geeksforgeeks.org/print-nodes-distance-k-given-node-binary-tree/amp/)
+ * We need to do int arithematic with return 0 for target and handle k ( pass) to determine the depth
+ * in ALL possible ancestors (tree root too) subtrees
  */
 public class BST_BurnTree {
 
