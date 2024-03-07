@@ -4,8 +4,28 @@ import com.hiru.practice.datastructures.bst.impl.MyBinarySearchTree;
 import com.hiru.practice.datastructures.bst.impl.MyNode;
 import com.hiru.practice.util.MyLogger;
 
-
-public class BSTBurnTree {
+/**
+ * ========================== BST TIPS ==========================
+ * 1. Mode of Communication:
+ * ...............1. Return value from the child
+ * ...............2. Passed value from parent and older ancestors
+ * ...............3. IN/OUT parameter to keep track of node's path and state
+ * 2. Traversal (Choose it wisely):
+ * ...............1. PreOrder: If you want to do Something "FIRST" before trying out left and right subtree
+ * ...............2. Inorder: For sorting and L--R traversal
+ * ...............3. Reverse Inorder -- For K largest Element
+ * ...............4. PostOrder: If you want to explore LEFT and RIGHT and take decision for ROOT
+ * 3. Useful DataStructures:
+ * ...............1. ArrayList or ArrayList<ArrayList> (Path tracking with backtracking technique)
+ * ...............2. Stack: If you need to process the state in LIFO manner
+ * ...............3. Queue: For level order traversal
+ * ...............4. Multiple stacks: Zig zag
+ * 4. Nested traversals ?
+ * ...............Yes, if you want to take decision on PREVISITED subtree based on other subtree's/Parent's return state.
+ * ...............e.g. BST_BurnTree
+ * ==============================================================
+ */
+public class BST_BurnTree {
 
     public static void main(String args[]) {
         MyBinarySearchTree bst = new MyBinarySearchTree();
