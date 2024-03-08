@@ -793,7 +793,7 @@ public class BST_BurnTree {
 - Split problems into parts (e.g. Border traversal)
 
 #### TRIE
-
+- ```Trie Node is ARRAY of 26 TRIE nodes.....and....tree level==string char index```
 - Distinct element finding
 - Optimal lookup
 - Node Structure:
