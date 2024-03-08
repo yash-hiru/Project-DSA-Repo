@@ -509,18 +509,18 @@ class GFG {
     /**
      * Detect cycle from each of the start node recursively
      */
-    boolean BFS_isCyclicUtil(int v, Boolean visited[],
+    boolean BFS_isCyclicUtil(int u, Boolean visited[],
                          int parent) {
         // Mark the current node as visited
-        visited[v] = true;
+        visited[u] = true;
         Integer i;
         // Recur for all the vertices adjacent to this vertex
-        Iterator<Integer> it = adj[v].iterator();
+        Iterator<Integer> it = adj[u].iterator();
         while (it.hasNext()) {
             i = it.next();
             // NON VISITED ADJ --> Recur 
             if (!visited[i]) {
-                if (BFS_isCyclicUtil(i, visited, v))
+                if (BFS_isCyclicUtil(i, visited, u))
                     return true;
             }
             // VISITED ADJ -->  
