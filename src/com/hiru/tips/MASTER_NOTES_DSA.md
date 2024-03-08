@@ -498,7 +498,7 @@ class GFG {
         for (int u = 0; u < V; u++) {
             // STEP 3 >>> Don't recur for u if already visited
             if (!visited[u])
-                if (isCyclicUtil(u, visited, -1))
+                if (BFS_isCyclicUtil(u, visited, -1))
                     return true; // STEP 4 >>> Return true if we find cycle in this subtree 
         }
         return false; // STEP 5: Return false if we DID NOT find ANY cycle from ANY node
@@ -509,7 +509,7 @@ class GFG {
     /**
      * Detect cycle from each of the start node recursively
      */
-    boolean isCyclicUtil(int v, Boolean visited[],
+    boolean BFS_isCyclicUtil(int v, Boolean visited[],
                          int parent) {
         // Mark the current node as visited
         visited[v] = true;
@@ -520,7 +520,7 @@ class GFG {
             i = it.next();
             // NON VISITED ADJ --> Recur 
             if (!visited[i]) {
-                if (isCyclicUtil(i, visited, v))
+                if (BFS_isCyclicUtil(i, visited, v))
                     return true;
             }
             // VISITED ADJ -->  
