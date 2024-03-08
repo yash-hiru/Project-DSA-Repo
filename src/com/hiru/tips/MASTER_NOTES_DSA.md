@@ -538,6 +538,37 @@ class GFG {
 ```
 
 #### ----- Topological Sorting -----
+- Extremely important for compiler, dependency and job sequencing
+- Pseudocode:
+- 
+```java
+class GFG {
+   /////////////////////// (Driver code)
+   public void  topologicalSort(int V, List<List> adj) {
+      // STEP1: Assume unconnected graph hence multiple FOR(DFS)
+      boolean [] visited = new boolean[V];
+      Stack stack = new Stack(); // java.utils.colections
+      // STEP2: Push the element in PECULIER order (LIFO-DFS) to stack
+      for(int u = 0; u < V; u++) {
+          DFS_topologicalSort_UTIL(V, adj,visited, stack, u);
+      }
+      // STEP3: Print elements of stack, thats it (LIFO-- Deepest child node will get printed first) (Works for islands too)
+   }
+
+   ///////////////////////// DFS (Tweaked)
+   public void  DFS_topologicalSort_UTIL(int V, List<List> adj, boolean[] visited, Stack stack, int u) {
+      // STEP1: Visit element
+      visited[u] = true;
+
+      // STEP2: DFS adj nodes (
+      for(int v=0; v < adj.size(); v++) {
+         DFS_topologicalSort_UTIL(V, adj,visited, stack, v);
+      }
+      // STEP3: Push current node to Stack(after adj)
+      stack.push(u);
+   }
+}
+```
 
 Todo
 
