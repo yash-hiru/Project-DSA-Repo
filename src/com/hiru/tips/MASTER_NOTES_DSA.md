@@ -435,18 +435,20 @@ class Graph {
      * Time complexity -- O(N3) 
      */
     int[][] transitiveClosure() {
-        int reach[][] = new int[V][V]; // Adjacency Matrix
-        // then make sure that the value of reach[i][j] is 1
+        int reach[][] = new int[V][V]; // STEP1: Additional output data structure (reach[][] = Path exist=1, path no exist=0)
+        // STEP2: O(N^3) combinations of 3 vertices hence 3 for loops
         for (int i = 0; i < V; i++) {
             for (int j = 0; j < V; j++) {
-                for (int j = 0; j < V; j++) {
-                    // Important -- Transitive connectivity/Path
+                for (int k = 0; k < V; k++) {
+                    // STEP3: Update Transitive connectivity/Path from i to j
+                    // If {i,j} path exist OR {i,k} and {k,j} path exists ? ==> update {i,j} = 1 (Some path exist from i to j) 
                     reach[i][j] =
                             (reach[i][j] != 0) ||
                                     ((reach[i][k] != 0) && (reach[k][j] != 0)) ? 1 : 0;
                 }
             }
         }
+        // STEP4: Return the output
         return reach; // return transitive closure
     }
 }
