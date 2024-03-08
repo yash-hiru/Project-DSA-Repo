@@ -264,8 +264,8 @@ Same as knapsack.
     - Match ```MAX [2 +(i+1, j-1),  (i+1, j-1),  (i, j-1)]```
     - NoMatch ```MAX [ (i+1, j-1),  (i, j-1)]```
 6. Edit distance ( 1 vs 3 choices)
-    - Match```0+(i+1, j+1)```
-    - NoMatch```MAX [(i+1, j+1) (i+1, j) (i, j+1)]```
+    - Match ```0+(i+1, j+1)```
+    - NoMatch ```1 + MAX [(i+1, j+1) (i+1, j) (i, j+1)]```
 
 #### Implementation
 
