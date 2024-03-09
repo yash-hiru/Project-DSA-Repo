@@ -1,5 +1,9 @@
 package com.hiru.practice.datastructures.matrix;
 
+/**
+ * Find word in matrix( 4 directions)-- Could be extended to 8 directions
+ * GFG: https://www.geeksforgeeks.org/search-a-word-in-a-2d-grid-of-characters/amp/
+ */
 public class MATRIX_FindWord {
     public static void main(String args[]) {
         //Input
