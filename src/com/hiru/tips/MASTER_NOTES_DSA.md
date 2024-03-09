@@ -75,6 +75,21 @@ Identifying the right category saves time, gives us skeleton and also boost conf
 - DONT Seek hints
 - DONT Miss Overflows and validation checks
 - DONT do early refactoring ( do it only if you have enough time)
+- DONT assume NO PREPROCESSING such as sorting input.
+    - **IMPLICIT ordering** if that affects the decision
+        - e.g. ORACLE -- Trip-pickup-drop-tip oracle problem.
+        - Its better to preprocess input (Sort by pickup in
+          **TreeMap** ) and then explore it.
+        - Explore next state recursively
+          ```
+            private static long getMaxEarnings(...,i) {
+              for(key in TreeMap) {
+                 if(drop(i) <= pickup(i)) {
+                    // Recurse
+                    getMaxEarnings(...j);
+                 }
+            }
+            ``` 
 
 ---
 
@@ -510,7 +525,7 @@ class GFG {
      * Detect cycle from each of the start node recursively
      */
     boolean BFS_isCyclicUtil(int u, Boolean visited[],
-                         int parent) {
+                             int parent) {
         // Mark the current node as visited
         visited[u] = true;
         Integer i;
@@ -538,35 +553,37 @@ class GFG {
 ```
 
 #### ----- Topological Sorting -----
+
 - Extremely important for compiler, dependency and job sequencing
 - Pseudocode:
-- 
+-
+
 ```java
 class GFG {
-   /////////////////////// (Driver code)
-   public void  topologicalSort(int V, List<List> adj) {
-      // STEP1: Assume unconnected graph hence multiple FOR(DFS)
-      boolean [] visited = new boolean[V];
-      Stack stack = new Stack(); // java.utils.colections
-      // STEP2: Push the element in PECULIER order (LIFO-DFS) to stack
-      for(int u = 0; u < V; u++) {
-          DFS_topologicalSort_UTIL(V, adj,visited, stack, u);
-      }
-      // STEP3: Print elements of stack, thats it (LIFO-- Deepest child node will get printed first) (Works for islands too)
-   }
+    /////////////////////// (Driver code)
+    public void topologicalSort(int V, List<List> adj) {
+        // STEP1: Assume unconnected graph hence multiple FOR(DFS)
+        boolean[] visited = new boolean[V];
+        Stack stack = new Stack(); // java.utils.colections
+        // STEP2: Push the element in PECULIER order (LIFO-DFS) to stack
+        for (int u = 0; u < V; u++) {
+            DFS_topologicalSort_UTIL(V, adj, visited, stack, u);
+        }
+        // STEP3: Print elements of stack, thats it (LIFO-- Deepest child node will get printed first) (Works for islands too)
+    }
 
-   ///////////////////////// DFS (Tweaked)
-   public void  DFS_topologicalSort_UTIL(int V, List<List> adj, boolean[] visited, Stack stack, int u) {
-      // STEP1: Visit element
-      visited[u] = true;
+    ///////////////////////// DFS (Tweaked)
+    public void DFS_topologicalSort_UTIL(int V, List<List> adj, boolean[] visited, Stack stack, int u) {
+        // STEP1: Visit element
+        visited[u] = true;
 
-      // STEP2: DFS adj nodes (
-      for(int v=0; v < adj.size(); v++) {
-         DFS_topologicalSort_UTIL(V, adj,visited, stack, v);
-      }
-      // STEP3: Push current node to Stack(after adj)
-      stack.push(u);
-   }
+        // STEP2: DFS adj nodes (
+        for (int v = 0; v < adj.size(); v++) {
+            DFS_topologicalSort_UTIL(V, adj, visited, stack, v);
+        }
+        // STEP3: Push current node to Stack(after adj)
+        stack.push(u);
+    }
 }
 ```
 
@@ -793,6 +810,7 @@ public class BST_BurnTree {
 - Split problems into parts (e.g. Border traversal)
 
 #### TRIE
+
 - ```Trie Node is ARRAY of 26 TRIE nodes.....and....tree level==string char index```
 - Distinct element finding
 - Optimal lookup
@@ -814,5 +832,50 @@ public class BST_BurnTree {
     - Heap for K-largest
 
 ---
+
+## 6. Theme ==> Arrays and Strings
+
+##### Points to ponder
+
+**Index:**
+
+- **Loops**: Forget to increment index, index value after full loop
+    - BFS loop: ```Check element if visited before before queueing or recursing```
+- **Index arithmetic**:  -- and ++ and bounds
+- **Optimization**: Inputs Index bounds checks before exploring directions
+- **2D index**: We need it in queue, passing across calls, store in list
+    - Have this class handy for maze/matrix/graph problems.
+      ```java
+        static class Point{
+            public Point(int x, int y) {
+                this.x =x;
+                this.y = y;
+            }
+            int x;
+            int y;
+        }
+        ```
+
+**DS/Maze:**
+
+- Parameters: ```<arr, mm, nn, i, j>```
+- Directions:
+    - Replicated logic with slight for and if conditions
+    - Max directions: **4 or 8**
+- Graph (Maze):
+    - Graph is NOT necessarily maze but maze is graph; Hence graph problems are applicable for MAZE too.
+    - Graph Adj matrix is DIFFERENT than maze representation
+    - In maze, graph has by default MIN 3 or MAX 8 adj nodes with 1 as default implicit distance.
+
+---
+
+## 6. Theme ==> Queue
+
+##### Points to ponder
+
+- Inbuilt Queue: ```LinkedList<Integer> queue = new LinkedList<>();```:
+    - Enque/ADD: ```list.add(e);```
+    - Deque/POLL: ```int e = list.poll();```
+    - PEEK (Gets but DONT removes): ```int e = list.peek(e);```
 
 </span>
