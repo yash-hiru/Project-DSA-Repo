@@ -1,7 +1,7 @@
-package com.hiru.dsa.java.datastructures.bst;
+package com.hiru.dsa.java.datastructures.tree;
 
-import com.hiru.dsa.java.datastructures.bst.impl.MyBinarySearchTree;
-import com.hiru.dsa.java.datastructures.bst.impl.MyNode;
+import com.hiru.dsa.java.datastructures.tree.impl.MyBinarySearchTree;
+import com.hiru.dsa.java.datastructures.tree.impl.MyNode;
 
 import java.util.ArrayList;
 

@@ -1,4 +1,4 @@
-package com.hiru.dsa.java.datastructures.bst.impl;
+package com.hiru.dsa.java.datastructures.tree.impl;
 
 // Java program to convert a given Binary Tree to Doubly Linked List
 

@@ -1,12 +1,12 @@
-package com.hiru.dsa.java.datastructures.bst;
+package com.hiru.dsa.java.datastructures.tree;
 
-import com.hiru.dsa.java.datastructures.bst.impl.MyBinarySearchTree;
-import com.hiru.dsa.java.datastructures.bst.impl.MyNode;
+import com.hiru.dsa.java.datastructures.tree.impl.MyBinarySearchTree;
+import com.hiru.dsa.java.datastructures.tree.impl.MyNode;
 
 /**
  * GFG: https://www.geeksforgeeks.org/sorted-array-to-balanced-bst/amp/
  */
-public class SortedArrayToBST {
+public class NAIVE_BST_SortedArrayToBST {
     public static void main(String args[]) {
         int[] arr = new int[]{1, 2, 3, 4, 5, 6, 7, 8};
         MyNode node = getTree(arr, 0, arr.length - 1);

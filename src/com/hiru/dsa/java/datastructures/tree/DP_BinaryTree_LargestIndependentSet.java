@@ -1,4 +1,4 @@
-package com.hiru.dsa.java.datastructures.bst;
+package com.hiru.dsa.java.datastructures.tree;
 
 import java.util.HashMap;
 
@@ -25,7 +25,7 @@ import java.util.HashMap;
  * Input: root node of tree
  * Output: Size of LIS
  **/
-public class BinaryTree_DP_LargestIndependentSet {
+public class DP_BinaryTree_LargestIndependentSet {
     //////////////////////////
     static class Node {
         public Node(int d) {

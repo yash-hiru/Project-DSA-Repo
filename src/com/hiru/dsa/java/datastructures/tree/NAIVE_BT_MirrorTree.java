@@ -1,12 +1,12 @@
-package com.hiru.dsa.java.datastructures.bst;
+package com.hiru.dsa.java.datastructures.tree;
 
-import com.hiru.dsa.java.datastructures.bst.impl.MyNode;
+import com.hiru.dsa.java.datastructures.tree.impl.MyNode;
 
 /**
  * Find if this is SYMMETRIC ( Mirror) Tree
  * GFG: https://www.geeksforgeeks.org/symmetric-tree-tree-which-is-mirror-image-of-itself/amp/
  */
-public class MirrorTree {
+public class NAIVE_BT_MirrorTree {
 
     public static void main(String[] args) {
         MyNode tree = new MyNode(10);

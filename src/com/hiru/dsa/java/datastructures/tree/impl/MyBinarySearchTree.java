@@ -1,4 +1,4 @@
-package com.hiru.dsa.java.datastructures.bst.impl;
+package com.hiru.dsa.java.datastructures.tree.impl;
 
 import com.hiru.dsa.java.util.MyLogger;
 

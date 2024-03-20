@@ -1,7 +1,7 @@
-package com.hiru.dsa.java.datastructures.bst;
+package com.hiru.dsa.java.datastructures.tree;
 
-import com.hiru.dsa.java.datastructures.bst.impl.MyBinarySearchTree;
-import com.hiru.dsa.java.datastructures.bst.impl.MyNode;
+import com.hiru.dsa.java.datastructures.tree.impl.MyBinarySearchTree;
+import com.hiru.dsa.java.datastructures.tree.impl.MyNode;
 import com.hiru.dsa.java.util.MyLogger;
 
 /**
@@ -14,7 +14,7 @@ import com.hiru.dsa.java.util.MyLogger;
  * We need to do int arithematic with return 0 for target and handle k ( pass) to determine the depth
  * in ALL possible ancestors (tree root too) subtrees
  */
-public class BST_BurnTree {
+public class NAIVE_BT_BurnTree {
 
     public static void main(String args[]) {
         MyBinarySearchTree bst = new MyBinarySearchTree();

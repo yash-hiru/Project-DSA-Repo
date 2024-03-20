@@ -1,12 +1,12 @@
-package com.hiru.dsa.java.datastructures.bst;
+package com.hiru.dsa.java.datastructures.tree;
 
-import com.hiru.dsa.java.datastructures.bst.impl.MyNode;
+import com.hiru.dsa.java.datastructures.tree.impl.MyNode;
 
 /**
  * PROBLEM: The diameter of a tree is the number of nodes on the longest path between two leaves in the tree.
  * GFG:https://www.geeksforgeeks.org/diameter-of-a-binary-tree-in-on-a-new-method/amp/
  */
-public class DiameterOfBST {
+public class NAIVE_BST_Diameter {
 
     public static void main(String args[]) {
         MyNode tree = new MyNode(10);
