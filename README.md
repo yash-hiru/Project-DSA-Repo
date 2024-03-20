@@ -879,6 +879,27 @@ public class BST_BurnTree {
     - Enque/ADD: ```list.add(e);```
     - Deque/POLL: ```int e = list.poll();```
     - PEEK (Gets but DONT removes): ```int e = list.peek(e);```
+---
+
+## 7. Theme ==> Other Data Structures
+#### 7.1 HashSet (Cache for unsorted elements)
+- Use as cache for ```unsorted``` past seen element lookup
+- ```Matching pair sum problem``` for ```unsorted``` array could be solved using that in O(N) time. like below
+ ```java
+  public static boolean findPair(List<Integer> arr, int sum) {
+        HashSet<Integer> cache = new HashSet<>(); // You dont need hashmap since you dont have any value to be stored
+        for (int i = 0; i < arr.size(); i++) {
+            if (!cache.contains(arr.get(i))) {
+                cache.add(arr.get(i));
+            }
+            if (cache.contains(sum - arr.get(i))) {
+                return true;
+            }
+        }
+        return false;
+    }
+  ```
+
 
 --- 
 
