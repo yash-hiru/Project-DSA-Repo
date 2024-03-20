@@ -94,6 +94,8 @@ Identifying the right category saves time, gives us skeleton and also boost conf
 ---
 
 ## 1. Theme ==> Dynamic Programming (0-1 Knapsack)
+#### Illustration
+![](https://astikanand.github.io/techblogs/dynamic-programming-patterns/assets/knapsack_possiblities_tree.png)
 
 #### Uniqueness
 
