@@ -583,11 +583,17 @@ class GFG {
 
 ```
 
-#### ----- Topological Sorting -----
+#### ----- Topological Sorting (DAG dependency) -----
 
-- Extremely important for compiler, dependency and job sequencing
-- Pseudocode:
--
+- USECASES: Extremely important for compiler, dependency and job sequencing
+- CONDITIONS ==>
+    - Supported Data Structures:  **Directed Acyclic Graph**(including all **Trees** and **DAG forest**)
+    - Feature:
+        - The first vertex in topological sorting is always a vertex with an in-degree of 0 (a vertex with no incoming
+          edges).
+        - In case of tree, ROOT will always be FIRST vertex in output
+
+- Example (DAG forest):
 
 ```java
 class GFG {
@@ -616,6 +622,25 @@ class GFG {
         stack.push(u);
     }
 }
+```
+
+- Example (Binary Tree- N ary):
+
+```java
+class Demo {
+    void toplogicalSortBinaryTree(Node node, Stack stack) {
+        if (node == null) {
+            return;
+        }
+        // Simpler( No need to keep track of visited elements due to fully connected tree property)
+        toplogicalSortBinaryTree(node.l);
+        toplogicalSortBinaryTree(node.r);
+
+        stack.add(node.data);
+    }
+}
+// Then print elements of stack
+
 ```
 
 #### ----- Flows and Fills -----
@@ -849,17 +874,27 @@ public class BST_BurnTree {
 - Pass parameters by val/ref to children calls
 - Split problems into parts (e.g. Border traversal)
 
-#### TRIE
+#### TRIE (As PRE-processed dict of strings for improved term lookup)
 
+- USAGES: Phone Dictionary, Prefix tree, String lookup
 - ```Trie Node is ARRAY of 26 TRIE nodes.....and....tree level==string char index```
-- Distinct element finding
-- Optimal lookup
+- Distinct element finding in O(k) time
+- Lookup time:
+    - Without trie: O(N) find all the strings
+    - With trie: O(k) find all the chars of current string only. (Super fast)
+- When to use:
+    - Write once, read multiple time--- Fastest strings set lookup (Similar to elastic search)
+- How to use:
+    - FIRST, Preprocess the strings (Insert all strings to trie) or tel numbers
+    - Lookup
 - Node Structure:
     ```java
     class Node {
         Node[] keys = new Node[26]; //Alphabets    
     }
-- ```ch = str.charAt(i)``` <-->  ```trieLevel(i).key[ch-'a']```
+  ```
+- Key condition: ```ch = str.charAt(i)``` <-->  ```trieLevel(i).key[ch-'a']```
+- [Common Trie Interview questions:](https://www.geeksforgeeks.org/tag/trie/)
 
 #### Heap
 
