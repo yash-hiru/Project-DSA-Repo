@@ -5,6 +5,6 @@ package com.hiru.dsa.java.datastructures.graph;
  *
  * GFG >>>https://www.geeksforgeeks.org/find-whether-it-is-possible-to-finish-all-tasks-or-not-from-given-dependencies/amp/
  */
-public class TODO_PrerequisiteTasks {
+public class _TODO_PrerequisiteTasks {
     // TODO--implement me
 }

@@ -6,7 +6,7 @@ import java.util.Arrays;
  * CHECK IF GRAPH IS BIPARTILE
  * GFG >>> https://www.geeksforgeeks.org/bipartite-graph/amp/
  */
-public class TODO_CheckIfBipartile {
+public class _TODO_CheckIfBipartile {
     private static int minColor = Integer.MAX_VALUE;
 
     public static void main(String args[]) {

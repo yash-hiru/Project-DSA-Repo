@@ -94,7 +94,9 @@ Identifying the right category saves time, gives us skeleton and also boost conf
 ---
 
 ## 1. Theme ==> Dynamic Programming (0-1 Knapsack)
+
 #### Illustration
+
 ![](https://astikanand.github.io/techblogs/dynamic-programming-patterns/assets/knapsack_possiblities_tree.png)
 
 #### Uniqueness
@@ -152,29 +154,53 @@ Similar problems of **0/1 knapsack** (N, wt [], val[], W)
 
 #### Common Mistakes
 
-- Index Handling:
+- **Wrong Data Assumptions**
+    - Type-- Dont assume positive int as type.
+    - Arrays-- Assuming implicit ordering
+    - Graphs-- Assuming its fully connected and/or undirected.
+    - Trees-- Assuming its BST or binary tree
+    - Size-- Assuming its fitting in memory ( scale for million ?)
+- **Improper Index Handling:**
     - Avoid overflows wherever you are ++ or -- index
     - Base conditions for bound checks
     - FOR OPTIONS EXPLORATION LOOPS: Pay attention to conditions, Start value for ( j= i+1)
-- Base conditions beyond bounds checks:
+- **Initial/Invalid values Usages**
+    - Coin change can not be -ve but account balance could
+    - Choosing Boolean over boolean allow us to use ```null as invalid/uninitialied value```
+    - Count could never be -ve hence choose 0 as initial and -1 as invalid value
+    - Adding up MAX_INT would lead to overflow..Avoid it
+- **Not Following this DP soln format:**
+    - ```1 (HappyCases, Sad Cases and IndexBounds)``` Sequence chances as per problem
+    - ```2.DelegateToNextState```
+    - ```3. Memo Lookup```
+    - ```4. Recursive Happy```
+    - ```5. Recursive Sad```
+    - ```6. Invalid--Default return if any```
     - Add other base conditions beyond just bound check - e.g. invalid W in knapsack,
-- Datatype and Overflows:
+
+- **Causing Overflows:**
     - Choose long for int+int
     - MAX-1 value before incrementing it by 1. Or check overflow before it occurs.
     - Avoid overflow for INVALID state returns.
-- Memo:
+- **Memo handling -- DP(Memo) :**
+    - Initialize ALL dimentions with EXTRA (+1) dimension.
     - Pass memo to recursive calls
-    - Pay attention to choose between 2D vs 1D.
-    - Initialize it with EXTRA (+1) dimension.
     - Choose correct ( -1 if possible) INITIAL VALUE.
     - Add READ block before recursion. WRITE block inside FOR loop or A/B choices.
     - Check MAX_VALUE/ MIN_VALUE after read to avoid overflow
-- IF-Else vs IF type of choices:
+- **DP (subsequence vs substring)**
     - Subsequnce -- C1 or MAX(C2,C3)
     - Substring -- MAX(C1,C2, C3)
-- Avoid simplification of conditions/base cases:
+- **Avoid simplification of conditions/base cases:**
     - Ok to have redudency than missing any case in the process of over-simplification/coolness
     - OK to add separate if for separate case since return value per IF block could vary
+- **Graphs**
+    - Assuming fully connected and hence avoiding multiple DFS/BFSs
+    - Not tracking visited nodes
+    - Visiting node without checking status
+    - (As applicable) Hesitating to check all visited condition (O(N^2) call) -- We need it we should have it.
+- **Trees**
+    - Hesitating to do ```nested``` traversal from any node.
 
 #### Implementation
 
@@ -349,6 +375,9 @@ public class DeleteMe {
   class GFG {
       int V;
       List<Integer>[] adj = new LinkedList<Integer>[V];
+      // OR
+      List<Integer>[] adj = new List[V];
+      adj[0] = Arrays.asList(1, 2, 3);
   }
   ```
 - For directed Graph:
@@ -589,8 +618,6 @@ class GFG {
 }
 ```
 
-Todo
-
 #### ----- Flows and Fills -----
 
 Todo
@@ -601,7 +628,17 @@ Todo
 
 #### ----- Coloring -----
 
-Todo
+- Find Minimum Colors (Chromatic Number)
+    - This is SIMPLE problem
+    - Iterate through all adj and store outdegrees for each v
+    - Return MAX all the outdegrees +1 as MIN colors
+- M-Coloring ==> Can color using M colors ?
+    - Backtracking DFS is the way forward
+    - Start from s..[Color..Conflict=NO ...Recurse..Backtrack]
+    - Return true if ALL nodes are colored
+    - **** Breadth-First-Search ```DOES NOT WORK``` with ```backtracking```
+- Detect Bipartile Graph?
+    - Use M coloring algo with M=2. See if we found solution ?
 
 ---
 
@@ -619,6 +656,7 @@ Todo
     - SUCCESS (Found Solution-Leaf node)
     - ABANDON (Backtrack)
 - Aka. Optimal Brute force
+- ```For graphs, ALWAYS use DFS since BFS does not fit to backtracking algorithm```
 
 #### Time Complexity
 
@@ -879,27 +917,30 @@ public class BST_BurnTree {
     - Enque/ADD: ```list.add(e);```
     - Deque/POLL: ```int e = list.poll();```
     - PEEK (Gets but DONT removes): ```int e = list.peek(e);```
+
 ---
 
 ## 7. Theme ==> Other Data Structures
+
 #### 7.1 HashSet (Cache for unsorted elements)
+
 - Use as cache for ```unsorted``` past seen element lookup
 - ```Matching pair sum problem``` for ```unsorted``` array could be solved using that in O(N) time. like below
+
  ```java
-  public static boolean findPair(List<Integer> arr, int sum) {
-        HashSet<Integer> cache = new HashSet<>(); // You dont need hashmap since you dont have any value to be stored
-        for (int i = 0; i < arr.size(); i++) {
-            if (!cache.contains(arr.get(i))) {
-                cache.add(arr.get(i));
-            }
-            if (cache.contains(sum - arr.get(i))) {
-                return true;
-            }
+  public static boolean findPair(List<Integer> arr,int sum){
+        HashSet<Integer> cache=new HashSet<>(); // You dont need hashmap since you dont have any value to be stored
+        for(int i=0;i<arr.size();i++){
+        if(!cache.contains(arr.get(i))){
+        cache.add(arr.get(i));
+        }
+        if(cache.contains(sum-arr.get(i))){
+        return true;
+        }
         }
         return false;
-    }
+        }
   ```
-
 
 --- 
 
