@@ -750,35 +750,35 @@ Graph:
 
 ---
 
-## 5. Theme ==> Data Structures (Trees)
+## 5. Theme ==> Trees (Data Structure)
 
-#### 1. Mode of Communication:
+#### Mode of Communication:
 
 1. Return value from the child
 2. Passed value from parent and older ancestors
 3. IN/OUT parameter to keep track of node's path and state
 
-#### 2. Traversal (Choose it wisely):
+#### Traversal (Choose it wisely):
 
 1. PreOrder: If you want to do Something "FIRST" before trying out left and right subtree
 2. Inorder: For sorting and L--R traversal
 3. Reverse Inorder -- For K largest Element
 4. PostOrder: If you want to explore LEFT and RIGHT and take decision for ROOT
 
-#### 3. Useful DataStructures:
+#### Useful DataStructures:
 
 1. ArrayList or ArrayList<ArrayList> (Path tracking with backtracking technique)
 2. Stack: If you need to process the state in LIFO manner
 3. Queue: For level order traversal
 4. Multiple stacks: Zig zag
 
-#### 4. Nested traversals
+#### Nested traversals
 
 **Yes** you would need in in most of the problems
 (if you want to take decision on PREVISITED subtree based on other subtree's/Parent's return state.)
 e.g. ```BST_BurnTree```
 
-#### 5. Interesting Problems
+#### Interesting Problems
 
 * Burn Tree ([GFG Link](https://www.geeksforgeeks.org/burn-the-binary-tree-starting-from-the-target-node/amp/))
 
@@ -858,7 +858,7 @@ public class BST_BurnTree {
 
 ```
 
-#### BST
+#### Binary Search Trees (Sorts-Traversals)
 
 - Use recursion
 - InOrder, PreOrder, PostOrder DFS
@@ -867,14 +867,26 @@ public class BST_BurnTree {
 - Pass parameters by val/ref to children calls
 - Split problems into parts (e.g. Border traversal)
 
-#### BT
+#### Binary Trees (Traversal)
 
 - Traverse using recursive DFS or queue based BFS.
 - Decisions==> based on input and output returned by subtree calls
 - Pass parameters by val/ref to children calls
 - Split problems into parts (e.g. Border traversal)
 
-#### TRIE (As PRE-processed dict of strings for improved term lookup)
+#### Heap (Max-Min-Median)
+
+- Array implementation is common
+- ```iLeftChild = 2*iParent + 1``` and ```iRightChild = 2*iParent*2```
+- ```iParent = floor(iChild/2)```
+- Min-Max heap types
+- Common use cases:
+    - min+max heap for median of infinite stream
+    - Heap for K-largest
+
+---
+
+## 6. Theme ==> Trie (N-ary tree as PRE-processed dictionary)
 
 - USAGES: Phone Dictionary, Prefix tree, String lookup
 - ```Trie Node is ARRAY of 26 TRIE nodes.....and....tree level==string char index```
@@ -896,19 +908,9 @@ public class BST_BurnTree {
 - Key condition: ```ch = str.charAt(i)``` <-->  ```trieLevel(i).key[ch-'a']```
 - [Common Trie Interview questions:](https://www.geeksforgeeks.org/tag/trie/)
 
-#### Heap
-
-- Array implementation is common
-- ```iLeftChild = 2*iParent + 1``` and ```iRightChild = 2*iParent*2```
-- ```iParent = floor(iChild/2)```
-- Min-Max heap types
-- Common use cases:
-    - min+max heap for median of infinite stream
-    - Heap for K-largest
-
 ---
 
-## 6. Theme ==> Arrays and Strings
+## 7. Theme ==> Arrays and Strings
 
 ##### Points to ponder
 
@@ -944,38 +946,50 @@ public class BST_BurnTree {
 
 ---
 
-## 6. Theme ==> Queue
+## 8. Theme ==> Misc DSA
 
-##### Points to ponder
+##### Java Queue
 
-- Inbuilt Queue: ```LinkedList<Integer> queue = new LinkedList<>();```:
-    - Enque/ADD: ```list.add(e);```
-    - Deque/POLL: ```int e = list.poll();```
-    - PEEK (Gets but DONT removes): ```int e = list.peek(e);```
+- Inbuilt Queue: ```LinkedList<Integer> queue = new LinkedList<>();```
+- Enque/ADD: ```list.add(e);```
+- Deque/POLL: ```int e = list.poll();```
+- PEEK (Gets but DONT removes): ```int e = list.peek(e);```
 
----
+##### Java Stack
 
-## 7. Theme ==> Other Data Structures
+```java
+class Test {
+    // Pushing element on the top of the stack
+    static void stackUsage() {
+        java.util.Stack<Integer> stack; // Inbuilt stack for use
+        stack.push(10); // Push
+        int peekedElement = stack.peek(); //Peek 
+        int poppedElement = stack.pop(); // pop
+    }
+}
+```
 
-#### 7.1 HashSet (Cache for unsorted elements)
+##### Java HashSet (Cache for unsorted elements)
 
 - Use as cache for ```unsorted``` past seen element lookup
 - ```Matching pair sum problem``` for ```unsorted``` array could be solved using that in O(N) time. like below
 
  ```java
-  public static boolean findPair(List<Integer> arr,int sum){
-        HashSet<Integer> cache=new HashSet<>(); // You dont need hashmap since you dont have any value to be stored
-        for(int i=0;i<arr.size();i++){
-        if(!cache.contains(arr.get(i))){
-        cache.add(arr.get(i));
-        }
-        if(cache.contains(sum-arr.get(i))){
-        return true;
-        }
+class Demo {
+    public static boolean findPair(List<Integer> arr, int sum) {
+        HashSet<Integer> cache = new HashSet<>(); // You dont need hashmap since you dont have any value to be stored
+        for (int i = 0; i < arr.size(); i++) {
+            if (!cache.contains(arr.get(i))) {
+                cache.add(arr.get(i));
+            }
+            if (cache.contains(sum - arr.get(i))) {
+                return true;
+            }
         }
         return false;
-        }
-  ```
+    }
+}
+```
 
 --- 
 
