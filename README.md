@@ -688,6 +688,35 @@ Todo
 - DP < Backtracking < BruteForce
 - O(N^k) **<** O(k^N) / O(N!) **<** O(N^N)
 
+#### Hints
+
+- Find all solutions
+- Find combinations/permutations (not combinations)
+
+#### Common Mistakes
+
+- Breadth first (NEVER do that)
+    - Backtracking nature is ```Depth first``` only. Stick to that only.
+- Backtracking Changes:
+    - (EACH Stage Changes) If current stage involves changes --> backtrack those changes (once for ALL the choices)
+    - (EACH choice within curr stage) If EACH choice from current state involves any changes, then BACKTRACK the change
+      FOR EACK of the choice before
+      exploring next choice
+- Maze Loops ==>
+    - Stack overflow due to stuck.. if allowed all directions
+    - Keep track of visited node (for current x,y) and backtrack at the end
+
+- Path tracking ==>
+    - If path is Arraylist, then backtrack by removing last element as appropriate
+    - If path is String, then you DONT need backtracking for EACH CHOICE
+
+- Graph (DFS) ==>
+    - visited[u] = false
+  
+- Trees (DFS--any traversal)
+    - ArrayList<Integer> path;
+    - path.add(root.data())  ===backtrack===> path.remove(path.size()-1)
+
 #### General Outline (Pseudocode)
 
 ```java
@@ -992,20 +1021,14 @@ class Trie {
 }
 ```
 
-##### More Details
+##### Popular Problems
 
-##### Useful Methods
-
-    1. Word count (count all internal and external nodes)
-
--
-    2. Word count with prefix (Skip prefix char nodes and .. then ..count all internal and external nodes)
--
-    3. Word occurance count (Word lookup and return numOccurances)
--
-    4. Print all words
-- ........Backtracking DFS:
-- ........Choices==keys, Stage==level, Base==isEndOfNode, Backtack==str=str.substring(0, length-1)
+- Count words: (INSERT ==> ++ maintain the count on the go)
+- Count Most Frequent Word: (INSERT ==> ++ maintain the maxCount on the go)
+- Count Kth Frequent Word: (INSERT ==> ++ maintain the HEAP of TrieNodes (with occurance as key param)
+- Search Word/Prefix ==> (SEARCH)
+- Count Words with Prefix ==> (SEARCH -- BFS -- Start BFS from end of prefix)
+- Work Break Problem (String and Dict) ==> Build trie of dict and use DP to solve it
 
 ##### USAGES
 
