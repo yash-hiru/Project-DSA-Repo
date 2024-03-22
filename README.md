@@ -696,57 +696,65 @@ Todo
 #### Common Mistakes
 
 - Breadth first (NEVER do that)
-    - Backtracking nature is ```Depth first``` only. Stick to that only.
+    - Backtracking nature is **Depth first** only. Stick to that only.
 - Backtracking Changes:
-    - (EACH Stage Changes) If current stage involves changes --> backtrack those changes (once for ALL the choices)
-    - (EACH choice within curr stage) If EACH choice from current state involves any changes, then BACKTRACK the change
+    - (**EACH Stage** Changes) If current stage involves changes --> backtrack those changes (once for ALL the choices)
+    - (**EACH choice** within curr stage) If EACH choice from current state involves any changes, then BACKTRACK the
+      change
       FOR EACK of the choice before
       exploring next choice
 - Maze Loops ==>
-    - Stack overflow due to stuck.. if allowed all directions
-    - Keep track of visited node (for current x,y) and backtrack at the end
+    - **Stack overflow** due to stuck.. if allowed all directions
+    - Keep track of **visited node** (for current x,y) and backtrack at the end
 
 - Path tracking ==>
-    - If path is Arraylist, then backtrack by removing last element as appropriate
-    - If path is String, then you DONT need backtracking for EACH CHOICE
+    - If path is Arraylist, then its passed by reference, hence backtrack by removing last element as appropriate
+    - If path is **String**, its passed by value, hence you **DONT need backtracking** for EACH CHOICE
 
 - Graph (DFS) ==>
     - visited[u] = false
-  
+
 - Trees (DFS--any traversal)
     - ArrayList<Integer> path;
-    - path.add(root.data())  ===backtrack===> path.remove(path.size()-1)
+    - path.add(root.data())  ===backtrack===> **path.remove(path.size()-1)**
 
-#### General Outline (Pseudocode)
+#### Backtracking Pseudocode
 
 ```java
 class GFG {
     void FIND_SOLUTIONS(CURRENT_STATE, IN_OUT_PARAMETERS) {
-        //---------------- Exit case or base case
-        if (VALID_SOLUTION(IN_OUT_PARAMETERS)) {
+        //---------------- Section == Validations and base cases
+        // Happy case
+        if (FINAL_STAGE(IN_OUT_PARAMETERS)) {
             // --- Some recursive path ends to DESIRED STATE
-            STORE / RETURN True
-            return;
+            PRINT(SOLUTION);
+            RETURN true;
         }
-        //---------------- Iterate over all the choices
-        for (CHOICE in ALL_CHOICES) {
+
+        //---------------- Section == Recursion and backtracking
+        ___UPDATE_PARAM(param1); // UPDATE Stage level param
+
+        for (SOME_CHOICE in ALL_CHOICES) {
             // Filter out valid choice before recursive call for next state 
-            if (VALID(CHOICE)) {
+            if (VALID(SOME_CHOICE)) {
                 //----- We have found some valid choice for next state (phase)
-                APPLY(CURRENT_STATE, CHOICE);
+                ___UPDATE_PARAM(param2); // UPDATE choice level parameter
+
                 //----- Confirm this choice assuming next state would lead to final solution
-                FIND_SOLUTIONS(NEXT_STATE, IN_OUT_PARAMETERS);
                 //----- Desicion Problem: Return immediately if we know at least 1 solution was found.
                 //----- Backtrack if we dont see next state leading to the solution
                 // [***Optinal IF***] -- Not applicable for lets say subsets
-                if (IF subproblem lead to INVALID/UNDESIRED state){
+
+                if (FIND_SOLUTIONS(NEXT_STATE, IN_OUT_PARAMETERS) == false) {
                     // ----- Abandon the subproblem 
                     // ----- we undo certain assignments of values to variables to reassign them to other possible values, see if those lead to a valid solution.
-                    BACKTRACK(remove(CURRENT_STATE, CHOICE))
+                    ___BACKTRACK_PARAM(param2); // BACKTRACK choice level parameter
                     return;
                 }
+                ___BACKTRACK_PARAM(param2); // BACKTRACK choice level parameter
             }
         }
+        ___BACKTRACK_PARAM(param1); // BACKTRACK Stage level param
     }
 }
 ```
