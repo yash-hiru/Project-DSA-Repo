@@ -888,24 +888,129 @@ public class BST_BurnTree {
 
 ## 6. Theme ==> Trie (N-ary tree as PRE-processed dictionary)
 
-- USAGES: Phone Dictionary, Prefix tree, String lookup
-- ```Trie Node is ARRAY of 26 TRIE nodes.....and....tree level==string char index```
-- Distinct element finding in O(k) time
-- Lookup time:
-    - Without trie: O(N) find all the strings
-    - With trie: O(k) find all the chars of current string only. (Super fast)
+![](https://media.geeksforgeeks.org/wp-content/uploads/20220828232752/Triedatastructure1.png)
+
+##### Summary
+
+- Considerations ==> **Words, Search, Distinct count, Occurances, Prefix search**
+- Search Time:
+    - **Without** trie: ```O(N*K)``` find all the strings
+    - **With** trie: ```O(K)``` find all the chars of current string only. (Super fast)
 - When to use:
-    - Write once, read multiple time--- Fastest strings set lookup (Similar to elastic search)
+    - **Write once, read multiple time** ; Fastest strings set lookup (Similar to elastic search)
 - How to use:
-    - FIRST, Preprocess the strings (Insert all strings to trie) or tel numbers
-    - Lookup
-- Node Structure:
-    ```java
-    class Node {
-        Node[] keys = new Node[26]; //Alphabets    
+    - For most of the interview ques; **Preprocess** input (aka build trie)
+    - Then Lookup
+- Root Node:
+    - Always is **initialised with NO keys** at all
+    - Represents **0th index** of any string
+- Word Node (**2 types**):
+    - Type1: Internal ( with children keys)
+    - Type2: Leaf Node( without children keys)
+- Leaf Node:
+    - Node **with 0 keys**
+    - All LEAF nodes are words BUT All word nodes not necessarily Leaf Nodes
+
+- **class TrieNode**
+
+```java
+// N-ary Tree
+class TrieNode {
+    HashMap<String, MyTrieNode> mapping; // Key with Children Nodes
+    boolean isEndOfWord; // Indicates End of word node
+    int numOccurances;
+}
+```
+
+- **class Trie**
+
+```java
+class Trie {
+    ///////////////// Insert //////////////
+    public void insert(String str) {
+        // Start from root and add key at all levels
+        if (str != null) {
+            MyTrieNode node = root; // 1. Initial state
+            // 2. Update the trie
+            for (int i = 0; i < str.length(); i++) {
+                char ch = str.charAt(i);
+                // 2.1 Add mapping at given level ; If not exist 
+                if (!node.mapping.containsKey("" + ch)) {
+                    node.mapping.put("" + ch, new MyTrieNode());
+                }
+                // 2.2 Get the next level node to lookup next level key (aka char)
+                node = node.mapping.get("" + ch); // Next level node
+            }
+            // 3. Word level stats
+            node.isEndOfWord = true;
+        }
     }
-  ```
-- Key condition: ```ch = str.charAt(i)``` <-->  ```trieLevel(i).key[ch-'a']```
+
+    ///////////////// Search //////////////
+    public void searchWordOrPrefix(String str) {
+        if (str != null) {
+            return false;
+        }
+        MyTrieNode node = root; // 1. Initial state
+        for (int i = 0; i < str.length(); i++) {
+            String key = "" + ch;
+            if (node.mapping.containsKey(key)) {
+                node = node.mappings.get(key);
+            } else {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    ///////////////// Count Distinct Words //////////////
+    public int countDistinctWordsBFS() {
+        LinkedList<MyTrieNode> queue = new LinkedList<>();
+
+        //1. Initial State: Enqueu ROOT keys
+        for (Map.Entry<String, MyTrieNode> entry :
+                root.mapping.entrySet()) {
+            queue.add(entry.getValue());
+        }
+        // IMPORTANT: Slight variation includes the Initial state being prefix keys.
+        // 2. Loop until queue is empty ( O(NxK) )
+        int count = 0;
+        while (!queue.isEmpty()) {
+            // 2.1 Deque
+            MyTrieNode node = queue.poll();
+            // 2.2 Increment count if word?
+            if (node.isEndOfWord)
+                count += 1;
+            // 2.3 Enque children keys
+            if (node.mapping.entrySet().size() > 0) {
+                queue.addAll(node.mapping.values()); // Bulk enque
+            }
+        }
+        //3. return count
+        return count;
+    }
+}
+```
+
+##### More Details
+
+##### Useful Methods
+
+    1. Word count (count all internal and external nodes)
+
+-
+    2. Word count with prefix (Skip prefix char nodes and .. then ..count all internal and external nodes)
+-
+    3. Word occurance count (Word lookup and return numOccurances)
+-
+    4. Print all words
+- ........Backtracking DFS:
+- ........Choices==keys, Stage==level, Base==isEndOfNode, Backtack==str=str.substring(0, length-1)
+
+##### USAGES
+
+- Phone Dictionary, Prefix tree, String lookup
+
 - [Common Trie Interview questions:](https://www.geeksforgeeks.org/tag/trie/)
 
 ---
