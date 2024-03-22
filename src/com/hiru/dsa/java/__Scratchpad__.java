@@ -1,21 +1,78 @@
 package com.hiru.dsa.java;
 
-import java.util.Arrays;
+import com.hiru.dsa.java.util.MyLogger;
+
 import java.util.List;
 
 public class __Scratchpad__ {
 
     public static void main(String[] args) {
         System.out.println("Enter Main----------------------");
-        int coins[] = {25, 10, 5};
-        int V = 10;
-        int[] memo = new int[V + 1];
-        Arrays.fill(memo, -1);
-        System.out.println("Min Coins: " + DP_unboudedKnap_minCoins(coins, V, memo));
-
+        // Test here
         System.out.println("Exit Main----------------------");
     }
 
+    //////////////////////////////////////////////////////////////////////////////////////////
+    static void numNQueen(int[][] chess, int size, int q) {
+        if (q == size) {
+            MyLogger.info("found Solution");
+            return;
+        }
+        for (int i = 0; i < size; i++) {
+            if (!conflicting(chess, size, q, i)) {
+                chess[q][i] = 1;
+                numNQueen(chess, size, q + 1);
+                chess[q][i] = 0; // Backtrack
+            }
+        }
+    }
+
+    private static boolean conflicting(int[][] chess, int size, int r, int c) {
+        //Horizontal conflicts
+        for (int k = 0; k < size; k++) {
+            if (chess[r][k] == 1) {
+                return true;
+            }
+        }
+
+        //Vertical conflicts
+        for (int k = 0; k < size; k++) {
+            if (chess[k][c] == 1) {
+                return true;
+            }
+        }
+
+        // Diagonal conflicts-- BR
+        for (int k1 = r + 1, k2 = c + 1; k1 < size || k2 < size; k1++, k2++) {
+            if (chess[k1][k2] == 1) {
+                return true;
+            }
+        }
+
+        // Diagonal conflicts-- BR
+        for (int k1 = r - 1, k2 = c - 1; k1 >= 0 || k2 >= 0; k1--, k2--) {
+            if (chess[k1][k2] == 1) {
+                return true;
+            }
+        }
+
+        // Diagonal conflicts-- BR
+        for (int k1 = r + 1, k2 = c - 1; k1 < size || k2 >= 0; k1++, k2--) {
+            if (chess[k1][k2] == 1) {
+                return true;
+            }
+        }
+
+        // Diagonal conflicts-- BR
+        for (int k1 = r - 1, k2 = c + 1; k1 >= 0 || k2 < size; k1--, k2++) {
+            if (chess[k1][k2] == 1) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    //////////////////////////////////////////////////////////////////////////////////////////
 
     /**
      * int coins[] = {25, 10, 5};
@@ -43,6 +100,8 @@ public class __Scratchpad__ {
         }
         return sol; // Could return MAX_VALUE for invalid state (Handle it carefully in parent callers to avoid overflow)
     }
+
+    //////////////////////////////////////////////////////////////////////////////////////////
 
     /**
      * int arr[] = {1, 5, 8, 9, 10, 17, 17, 20};
@@ -72,6 +131,8 @@ public class __Scratchpad__ {
         }
         return sol; // Could return MIN_VALUE for invalid state (Handle it carefully in parent callers)
     }
+
+    //////////////////////////////////////////////////////////////////////////////////////////
 
     /**
      * int[][] maze = new int[5][5];
@@ -130,6 +191,8 @@ public class __Scratchpad__ {
         }
     }
 
+    //////////////////////////////////////////////////////////////////////////////////////////
+
     /**
      * int V = 4;
      * List<Integer>[] adj = new List[V];
@@ -155,7 +218,7 @@ public class __Scratchpad__ {
 
     }
 
-    ///////////////////////////////////////////////////////////////
+    //////////////////////////////////////////////////////////////////////////////////////////
 
     /**
      * int coins[] = {9, 6, 5};
