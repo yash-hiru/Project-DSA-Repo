@@ -1,11 +1,76 @@
 package com.hiru.dsa.java;
 
+import java.util.Arrays;
 import java.util.List;
 
 public class __Scratchpad__ {
 
     public static void main(String[] args) {
+        System.out.println("Enter Main----------------------");
+        int coins[] = {25, 10, 5};
+        int V = 10;
+        int[] memo = new int[V + 1];
+        Arrays.fill(memo, -1);
+        System.out.println("Min Coins: " + DP_unboudedKnap_minCoins(coins, V, memo));
 
+        System.out.println("Exit Main----------------------");
+    }
+
+
+    /**
+     * int coins[] = {25, 10, 5};
+     * int V = 10;
+     * int[] memo = new int[V + 1];
+     * Arrays.fill(memo, -1);
+     * System.out.println("Min Coins: " + minCoins(coins, V, memo));
+     */
+    static int DP_unboudedKnap_minCoins(int[] coins, int change, int[] memo) {
+        if (change == 0) {
+            return 0; // No coins could be used
+        }
+
+        if (memo[change] != -1) {
+            return memo[change];
+        }
+
+        int sol = Integer.MAX_VALUE;
+        for (int i = 0; i < coins.length; i++) {
+            if (coins[i] <= change) {
+                memo[change - coins[i]] = DP_unboudedKnap_minCoins(coins, change - coins[i], memo);
+                if (memo[change - coins[i]] < Integer.MAX_VALUE)
+                    sol = Math.min(sol, 1 + memo[change - coins[i]]);
+            }
+        }
+        return sol; // Could return MAX_VALUE for invalid state (Handle it carefully in parent callers to avoid overflow)
+    }
+
+    /**
+     * int arr[] = {1, 5, 8, 9, 10, 17, 17, 20};
+     * int memo[] = new int[arr.length + 1];
+     * Arrays.fill(memo, -1);
+     * System.out.println(DP_rodCutMaxProfit(arr, arr.length, memo));
+     */
+    static int DP_unboundedKnap_rodCutMaxProfit(int[] rates, int size, int[] memo) {
+        // Base--invalid and happy conditions
+        if (size == 0) {
+            return 0;
+        }
+        // Memoize -- cache hit
+        if (memo[size] != -1) {
+            return memo[size];
+        }
+
+        int sol = Integer.MIN_VALUE;
+        // Explore valid choices --
+        for (int i = 0; i < size; i++) {
+            if (i + 1 <= size) {
+                // Memoize -- cache save
+                memo[size - i - 1] = DP_unboundedKnap_rodCutMaxProfit(rates, size - i - 1, memo);
+                if (memo[size - i - 1] != Integer.MIN_VALUE)
+                    sol = Math.max(sol, rates[i] + memo[size - i - 1]);
+            }
+        }
+        return sol; // Could return MIN_VALUE for invalid state (Handle it carefully in parent callers)
     }
 
     /**

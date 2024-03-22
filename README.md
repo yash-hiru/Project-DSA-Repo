@@ -141,16 +141,21 @@ Similar problems of **0/1 knapsack** (N, wt [], val[], W)
     - HAPPY --- W matches after adding i
     - HAPPY --- No more weights and W is still not filled
 
+#### Time complexity
+
+- **Before DP---Exponential**:  O(2^N)
+- **After Memoization DP----Linear or Quadratic**: O(N) /O(NxM) -- Depending on memo dimentionality
+
 #### Examples
 
-| Sr.No | Problem                                                           | Options  | Value (Impact Objective) | Constraints   | Repeat  | Options           | Num Children | Operator              | Base Case return value                |
-| ----- | ----------------------------------------------------------------- | -------- | ------------------------ | ------------- | ------- | ----------------- | ------------ | --------------------- | ------------------------------------- |
-| 1     | **0-1 Knapsack**                                                  | wt[N]    | val[]                    | W max weight  | No      | Yes/No            | 2****        | **MAX**(subproblems)  | val[N-1]                              |
-| 2     | **Minimum number of Coins to get the V**                          | coins[N] | **1**                    | V value       | **Yes** | **FOR** (options) | **N**        | **MIN**(subproblems)  | 1                                     |
-| 3     | **Subset  Sum (If Exist Any subset)**                             | set[N]   | **True/false**           | No Repeations | No      | Yes/No            | 2            | **OR**(subproblems)   | True                                  |
-| 4     | **Subset  Sum (Count All such subsets)**                          | set[N]   | **SUM(counts)**          | No Repeations | No      | Yes/No            | 2            | **SUM (subproblems)** | count of all combinations e.g. 1, 2,3 |
-| 5.    | **Cut Road to get Max profit**                                    | rod[N]   | **rod[i]**               | rod[N]        | **Yes** | **FOR** (options) | **N**        | **MAX**(subproblems)  | rod[N-1]                              |
-| 6.    | Palindrome Partitioning- Find MIN number of palindrome partitions |          |                          |               |         |                   |              |                       |                                       |
+| Sr.No | Problem                                                       | Options  | Value (Impact Objective) | Constraints   | Repeat  | Options           | Num Children | Operator              | Base Case return value                |
+| ----- |---------------------------------------------------------------| -------- | ------------------------ | ------------- | ------- | ----------------- | ------------ | --------------------- | ------------------------------------- |
+| 1     | **0-1 Knapsack**                                              | wt[N]    | val[]                    | W max weight  | No      | Yes/No            | 2****        | **MAX**(subproblems)  | val[N-1]                              |
+| 2     | **Minimum number of Coins to get the V**                      | coins[N] | **1**                    | V value       | **Yes** | **FOR** (options) | **N**        | **MIN**(subproblems)  | 1                                     |
+| 3     | **Subset  Sum (If Exist Any subset)**                         | set[N]   | **True/false**           | No Repeations | No      | Yes/No            | 2            | **OR**(subproblems)   | True                                  |
+| 4     | **Subset  Sum (Count All such subsets)**                      | set[N]   | **SUM(counts)**          | No Repeations | No      | Yes/No            | 2            | **SUM (subproblems)** | count of all combinations e.g. 1, 2,3 |
+| 5.    | **Cut Road to get Max profit**                      | rod[N]   | **rod[i]**               | rod[N]        | **Yes** | **FOR** (options) | **N**        | **MAX**(subproblems)  | rod[N-1]                              |
+| 6.    | Palindrome Partitioning- Find MIN num of palindrome partitions |          |                          |               |         |                   |              |                       |                                       |
 
 #### Common Mistakes
 
@@ -160,15 +165,25 @@ Similar problems of **0/1 knapsack** (N, wt [], val[], W)
     - Graphs-- Assuming its fully connected and/or undirected.
     - Trees-- Assuming its BST or binary tree
     - Size-- Assuming its fitting in memory ( scale for million ?)
+
 - **Improper Index Handling:**
     - Avoid overflows wherever you are ++ or -- index
     - Base conditions for bound checks
     - FOR OPTIONS EXPLORATION LOOPS: Pay attention to conditions, Start value for ( j= i+1)
+
 - **Initial/Invalid values Usages**
     - Coin change can not be -ve but account balance could
     - Choosing Boolean over boolean allow us to use ```null as invalid/uninitialied value```
     - Count could never be -ve hence choose 0 as initial and -1 as invalid value
     - Adding up MAX_INT would lead to overflow..Avoid it
+
+- **Causing Overflows:**
+    - Caller can return MAX_VALUE/MIN_VALUE
+    - Discard those in callee to avoid overflows.
+    - Choose long for int+int
+    - MAX-1 value before incrementing it by 1. Or check overflow before it occurs.
+    - Avoid overflow for INVALID state returns.
+
 - **Not Following this DP soln format:**
     - ```1 (HappyCases, Sad Cases and IndexBounds)``` Sequence chances as per problem
     - ```2.DelegateToNextState```
@@ -178,33 +193,37 @@ Similar problems of **0/1 knapsack** (N, wt [], val[], W)
     - ```6. Invalid--Default return if any```
     - Add other base conditions beyond just bound check - e.g. invalid W in knapsack,
 
-- **Causing Overflows:**
-    - Choose long for int+int
-    - MAX-1 value before incrementing it by 1. Or check overflow before it occurs.
-    - Avoid overflow for INVALID state returns.
+- **Final return**:
+    - Declare what does int return indicates for no solution exists scenario.
+    - e.g. Min coins ( coins[2,5,7] and change 3) ==> Integer.MAX_VALUE here should indicate no solution exist
+
 - **Memo handling -- DP(Memo) :**
     - Initialize ALL dimentions with EXTRA (+1) dimension.
     - Pass memo to recursive calls
     - Choose correct ( -1 if possible) INITIAL VALUE.
     - Add READ block before recursion. WRITE block inside FOR loop or A/B choices.
     - Check MAX_VALUE/ MIN_VALUE after read to avoid overflow
+
 - **DP (subsequence vs substring)**
     - Subsequnce -- C1 or MAX(C2,C3)
     - Substring -- MAX(C1,C2, C3)
+
 - **Avoid simplification of conditions/base cases:**
     - Ok to have redudency than missing any case in the process of over-simplification/coolness
     - OK to add separate if for separate case since return value per IF block could vary
+
 - **Graphs**
     - Assuming fully connected and hence avoiding multiple DFS/BFSs
     - Not tracking visited nodes
     - Visiting node without checking status
     - (As applicable) Hesitating to check all visited condition (O(N^2) call) -- We need it we should have it.
+
 - **Trees**
     - Hesitating to do ```nested``` traversal from any node.
 
 #### Implementation
 
-1. 0/1 Knapsack
+1. Bounded 0/1 Knapsack (without repeatations)
 
 ```java
 class GFG {
@@ -243,6 +262,36 @@ class GFG {
                 prof[i] + knapsack(prof, wt, size, W - wt[i], i + 1), //Choice1 -- Put item
                 knapsack(prof, wt, size, W, i + 1) // Choice2-- Don't put item
         );
+    }
+}
+```
+
+1. Unbouded 0/1 Knapsack (WITH repeatations) -- Min coins change problem
+   ```N recursive trees emerging for first FOR loop from first call```
+
+```java
+class MinCoinsChange {
+    static int DP_unboudedKnap_minCoins(int[] coins, int change, int[] memo) {
+        if (change == 0) {
+            return 0; // No coins could be used
+        }
+
+        // Memoize- cache hit
+        if (memo[change] != -1) {
+            return memo[change];
+        }
+
+        int sol = Integer.MAX_VALUE; // Min calculations 
+        for (int i = 0; i < coins.length; i++) {
+            // Guardrails for avoiding invalid calls
+            if (coins[i] <= change) {
+                // Memoize- cache save
+                memo[change - coins[i]] = DP_unboudedKnap_minCoins(coins, change - coins[i], memo);
+                if (memo[change - coins[i]] < Integer.MAX_VALUE) // Guardrail for invalid branches
+                    sol = Math.min(sol, 1 + memo[change - coins[i]]);
+            }
+        }
+        return sol; // Could return MAX_VALUE for invalid state (Handle it carefully in parent callers to avoid overflow)
     }
 }
 ```
