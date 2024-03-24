@@ -1189,6 +1189,10 @@ class Trie {
 ---
 
 ## 8. Theme ==> Misc DSA
+##### Java String
+- All primitive types including , String are pass BY VALUE. Safe to pass without worring.
+-  Substring usage== > **endIndex + 1**  to include endIndex char
+-  e.g. ```"aaBBBcc".substring(2, 4+1)``` to get **BBB**
 
 ##### Java Queue
 
