@@ -1,8 +1,22 @@
 <span style="color:brown">
 
-## 1. Coding Tips
+# Table Of Contents
 
-#### Coding Tips
+- [THEME 0 ==> Coding Interview Tips](https://github.com/yash-hiru/Project-DSA-Repo?tab=readme-ov-file#1-coding-tips)
+- [THEME 1 ==> Dynamic-programming-0-1-knap](https://github.com/yash-hiru/Project-DSA-Repo?tab=readme-ov-file#1-theme--dynamic-programming-0-1-knapsack)
+- [THEME 2 ==> Dynamic-programmingsubsequence-palindrome-editdist-jumps](https://github.com/yash-hiru/Project-DSA-Repo?tab=readme-ov-file#2-theme--dynamic-programmingsubsequence-palindrome-editdist-jumps)
+- [THEME 3 ==> Graphs](https://github.com/yash-hiru/Project-DSA-Repo?tab=readme-ov-file#3-theme--graphs)
+- [THEME 4 ==> Algorithms-backtracking](https://github.com/yash-hiru/Project-DSA-Repo?tab=readme-ov-file#4-theme--algorithms-backtracking)
+- [THEME 5 ==> Trees-data-structure](https://github.com/yash-hiru/Project-DSA-Repo?tab=readme-ov-file#5-theme--trees-data-structure)
+- [THEME 6 ==> Trie-n-ary-tree-as-pre-processed-dictionary](https://github.com/yash-hiru/Project-DSA-Repo?tab=readme-ov-file#6-theme--trie-n-ary-tree-as-pre-processed-dictionary)
+- [THEME 7 ==> Arrays-and-strings](https://github.com/yash-hiru/Project-DSA-Repo?tab=readme-ov-file#7-theme--arrays-and-strings)
+- [THEME 8 ==> Misc-dsa](https://github.com/yash-hiru/Project-DSA-Repo?tab=readme-ov-file#8-theme--misc-dsa)
+
+---
+
+## 1. Coding Interview
+
+####    
 
 Most of the problem belongs to some category or theme with minor tweaks viz. as Datatype, constraints, conditions,
 names.
