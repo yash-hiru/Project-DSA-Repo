@@ -1189,11 +1189,31 @@ class Trie {
 ---
 
 ## 8. Theme ==> Misc DSA
-##### Java String
+##### String
 - All primitive types including , String are pass BY VALUE. Safe to pass without worring.
 -  Substring usage== > **endIndex + 1**  to include endIndex char
 -  e.g. ```"aaBBBcc".substring(2, 4+1)``` to get **BBB**
-
+- Word Break Problem
+  ```java
+  static boolean wordBreak(List<String> wordList,
+                             String word) {
+        // If the word is empty, it can be broken down into an empty list of words
+        if (word.isEmpty()) {
+            return true;
+        }
+  
+        int wordLen = word.length();
+  
+        // Check if the word can be broken down into words from the wordList
+        for (int i = 1; i <= wordLen; ++i) {
+            String prefix = word.substring(0, i);
+            if (wordList.contains(prefix) && wordBreak(wordList, word.substring(i))) {
+                return true;
+            }
+        }
+        return false; //No luck
+    }
+  ```
 ##### Java Queue
 
 - Inbuilt Queue: ```LinkedList<Integer> queue = new LinkedList<>();```
