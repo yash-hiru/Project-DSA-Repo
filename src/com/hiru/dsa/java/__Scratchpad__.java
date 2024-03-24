@@ -2,6 +2,8 @@ package com.hiru.dsa.java;
 
 import com.hiru.dsa.java.util.MyLogger;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public class __Scratchpad__ {
@@ -9,8 +11,72 @@ public class __Scratchpad__ {
     public static void main(String[] args) {
         System.out.println("Enter Main----------------------");
         // Test here
+        int[] arr = new int[]{1, 1, 2, 3, 4, 5, 4, 4};
+
+        System.out.println(findDistinctPerSlidingWindow_Linear_time(arr, arr.length, 3));
         System.out.println("Exit Main----------------------");
     }
+
+    //////////////////////////////////////////////////////////////////////////////////////////
+
+    /**
+     * Solved within3 mins
+     *
+     * Space O(N)
+     * Time O(N)
+     * Distinct -- Use HashSet
+     */
+    static List<Integer> findDistinctPerSlidingWindow_Linear_time(int[] arr, int size, int win) {
+
+        List<Integer> sol = new ArrayList<>();
+
+        // Edge case
+        if (win <= size) {
+            //====Initial State
+            int i = 0;
+            int j = i + win - 1;
+            int k = i;
+            HashMap<Integer, Integer> subset = new HashMap<>();
+            while (k <= j) {
+                if (!subset.containsKey(arr[k])) {
+                    subset.put(arr[k], 1); // Set first occurance
+                } else {
+                    subset.put(arr[k], subset.get(arr[k]) + 1); // Inc occurance
+                }
+                k++;
+            }
+            sol.add(subset.keySet().size());
+
+            //====Next Stages
+            // Sliding logic
+            i += 1;
+            j += 1;
+
+            while (j < size) {
+                // Process i=== (remove single occ of prev i element)
+                if (subset.containsKey(arr[i - 1])) {
+                    if (subset.get(arr[i - 1]) == 1 || subset.get(arr[i - 1]) == 0) {
+                        subset.remove(arr[i - 1]); // remove key
+                    } else {
+                        subset.put(arr[i - 1], subset.get(arr[i - 1]) - 1); //dec count
+                    }
+                    subset.put(arr[i], 1); // Set first occurance
+                }
+                // Process j
+                if (!subset.containsKey(arr[j])) {
+                    subset.put(arr[j], 1); // Set first occurance
+                } else {
+                    subset.put(arr[j], subset.get(arr[j]) + 1); // Inc occurance
+                }
+                sol.add(subset.keySet().size());
+                i++;
+                j++;
+            }
+
+        }
+        return sol;
+    }
+
 
     //////////////////////////////////////////////////////////////////////////////////////////
     static void numNQueen(int[][] chess, int size, int q) {
@@ -71,8 +137,6 @@ public class __Scratchpad__ {
         }
         return false;
     }
-
-    //////////////////////////////////////////////////////////////////////////////////////////
 
     /**
      * int coins[] = {25, 10, 5};
@@ -247,4 +311,6 @@ public class __Scratchpad__ {
         }
         return memo[change] = sol;
     }
+
+
 }

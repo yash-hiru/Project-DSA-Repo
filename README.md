@@ -846,7 +846,10 @@ Graph:
 
 #### Traversal (Choose it wisely):
 
-1. PreOrder: If you want to do Something "FIRST" before trying out left and right subtree
+1. **PreOrder (Backtracking DNA)** (mostly for path+backtracking problems): If you want to do Something "FIRST" before
+   trying out left and
+   right
+   subtree
 2. Inorder: For sorting and L--R traversal
 3. Reverse Inorder -- For K largest Element
 4. PostOrder: If you want to explore LEFT and RIGHT and take decision for ROOT
@@ -866,83 +869,123 @@ e.g. ```BST_BurnTree```
 
 #### Interesting Problems
 
-* Burn Tree ([GFG Link](https://www.geeksforgeeks.org/burn-the-binary-tree-starting-from-the-target-node/amp/))
+- **kSum Path (How paths are being processed) ==>**
+    - PreOrder to add node to path
+    - Backtrack and process path **after recursive children** calls. (Same as backtracking algo)
 
 ```java
-public class BST_BurnTree {
-
-    public static void main(String args[]) {
-        MyBinarySearchTree bst = new MyBinarySearchTree();
-        bst.insertAll(new int[]{10, 5, 4, 7, 20, 16, 15, 17, 22, 24});
-        burn(bst.root, 16);
-    }
-
-    /**
-     * 1. Preorder traversal
-     * 2. Special treatment for found node
-     * 3. How to spread to parent (communicate with parent and siblings)
-     * 4. How to spread further (Multiple preOrder VISITS for SOME nodes)
-     * GFG : https://www.geeksforgeeks.org/burn-the-binary-tree-starting-from-the-target-node/amp/
-     * My solution is simpler and space+time efficient than GFG
-     *
-     * @return True(burned) false(did not find hence did not fired tree)
-     */
-
-    public static boolean burn(MyNode node, int s) {
-        //====== Preorder-- Invalid Case Check ======//
-        if (node == null) {
-            return false;
-        }
-        MyLogger.info("Visit: " + node.getData()); // VISIT TYPE1 -- Node was visited in find operation (FOR ALL)
-        //====== Preorder-- Check and Visit ======//
-        if (node.getData() == s) {
-            // Found the trigger; Burn it and its both subtrees
-            // Part1-- Burn this node and L,R subtrees
-            burnDown(node);
-            // Let immediate caller know that fire has started
-            return true;
-        }
-
-        //====== Preorder-- LEFT Recurse ======//
-        if (burn(node.getLeft(), s)) {
-            // Fire came from immediate left since it returned true
-            //Burn self
-            MyLogger.info("Burn: " + node.getData());
-            // Burn RIGHT subtree and return true(TRUE means FIRE)
-            burnDown(node.getRight());
-            return true;
-        }
-
-        //====== Preorder-- RIGHT Recurse ======//
-        if (burn(node.getRight(), s)) {
-            // Fire came from immediate right since it returned true
-            //Burn self
-            MyLogger.info("Burn: " + node.getData());
-            // Burn LEFT subtree and return true(TRUE means FIRE)
-            burnDown(node.getLeft());
-            return true;
-        }
-        // Trigger was not found anywhere; Just return false ( No need to burn this tree)
-        return false;
-    }
-
-    /**
-     * Another Preorder function for special operation
-     * @param node Subtree root to be processed
-     */
-    private static void burnDown(MyNode node) {
-        if (node == null) {
+  class KSumPath {
+    static void printKSumPaths(Node root, ArrayList<Integer> pathFromRoot, int k) {
+        // Step1 ------------- NODE ==> Base case
+        if (root == null) {
             return;
         }
-        MyLogger.info("Visit(Again): " + node.getData()); // VISIT TYPE2 -- Node was visited AGAIN for burning (FOR FEW)
-        //Preorder (root, left, right)
-        MyLogger.info("Burn: " + node.getData());
-        burnDown(node.getLeft());
-        burnDown(node.getRight());
+
+        // Step2------------- Make choice(add to path and recurse)
+        pathFromRoot.add(root.data);
+
+        // Step3------------- RECURSE-Preorder----- LEFT
+        printKSumPaths(root.left, pathFromRoot, k);
+
+        // Step4------------- RECURSE-Preorder-----RIGHT
+        printKSumPaths(root.right, pathFromRoot, k);
+
+        // Step5------------- Process path from root to current node
+        int sum = 0;
+        for (int i = pathFromRoot.size() - 1; i >= 0; i--) {
+            sum += pathFromRoot.get(i);
+
+            if (k == sum) {
+                count += 1;
+            }
+        }
+        // Step6------------- Backtrack
+        pathFromRoot.remove(pathFromRoot.size() - 1);
     }
 }
 
 ```
+
+- **Burn Tree (PreOrder traversal and Special processing for node on return path) ==>**
+    - Burn Tree ([GFG Link](https://www.geeksforgeeks.org/burn-the-binary-tree-starting-from-the-target-node/amp/))
+    - For a trigger node ==> Burn its tree and return true to let the caller know that burning to be trigerred
+    - For any other node higher up (e.g. root), revisit SOME nodes in opossite side of trigger node.
+
+  ```java
+  public class BST_BurnTree {
+  
+      public static void main(String args[]) {
+          MyBinarySearchTree bst = new MyBinarySearchTree();
+          bst.insertAll(new int[]{10, 5, 4, 7, 20, 16, 15, 17, 22, 24});
+          burn(bst.root, 16);
+      }
+  
+      /**
+       * 1. Preorder traversal
+       * 2. Special treatment for found node
+       * 3. How to spread to parent (communicate with parent and siblings)
+       * 4. How to spread further (Multiple preOrder VISITS for SOME nodes)
+       * GFG : https://www.geeksforgeeks.org/burn-the-binary-tree-starting-from-the-target-node/amp/
+       * My solution is simpler and space+time efficient than GFG
+       *
+       * @return True(burned) false(did not find hence did not fired tree)
+       */
+  
+      public static boolean burn(MyNode node, int s) {
+          //====== Preorder-- Invalid Case Check ======//
+          if (node == null) {
+              return false;
+          }
+          MyLogger.info("Visit: " + node.getData()); // VISIT TYPE1 -- Node was visited in find operation (FOR ALL)
+          //====== Preorder-- Check and Visit ======//
+          if (node.getData() == s) {
+              // Found the trigger; Burn it and its both subtrees
+              // Part1-- Burn this node and L,R subtrees
+              burnDown(node);
+              // Let immediate caller know that fire has started
+              return true;
+          }
+  
+          //====== Preorder-- LEFT Recurse ======//
+          if (burn(node.getLeft(), s)) {
+              // Fire came from immediate left since it returned true
+              //Burn self
+              MyLogger.info("Burn: " + node.getData());
+              // Burn RIGHT subtree and return true(TRUE means FIRE)
+              burnDown(node.getRight());
+              return true;
+          }
+  
+          //====== Preorder-- RIGHT Recurse ======//
+          if (burn(node.getRight(), s)) {
+              // Fire came from immediate right since it returned true
+              //Burn self
+              MyLogger.info("Burn: " + node.getData());
+              // Burn LEFT subtree and return true(TRUE means FIRE)
+              burnDown(node.getLeft());
+              return true;
+          }
+          // Trigger was not found anywhere; Just return false ( No need to burn this tree)
+          return false;
+      }
+  
+      /**
+       * Another Preorder function for special operation
+       * @param node Subtree root to be processed
+       */
+      private static void burnDown(MyNode node) {
+          if (node == null) {
+              return;
+          }
+          MyLogger.info("Visit(Again): " + node.getData()); // VISIT TYPE2 -- Node was visited AGAIN for burning (FOR FEW)
+          //Preorder (root, left, right)
+          MyLogger.info("Burn: " + node.getData());
+          burnDown(node.getLeft());
+          burnDown(node.getRight());
+      }
+  }
+  
+  ```
 
 #### Binary Search Trees (Sorts-Traversals)
 
