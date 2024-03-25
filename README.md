@@ -581,9 +581,11 @@ class GFG {
                 if (maze[i][j] == 1 && visited[i][j] == false) {
                     // DO BFS/DFS ( Explore U-D-L-R for maze and adj for graph)
                     BFS(maze, i, j); // (OR DFS would also work)
+                    numberOfIslands++; // ONE BFS traversal for Subset of nodes is ONE island
                 }
             }
         }
+        return numberOfIslands;
     }
 }
 
