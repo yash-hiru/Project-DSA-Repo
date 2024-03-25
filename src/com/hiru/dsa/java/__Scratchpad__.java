@@ -11,15 +11,46 @@ public class __Scratchpad__ {
     public static void main(String[] args) {
         System.out.println("Enter Main----------------------");
         // Test here
-        int[] arr = new int[]{1, 1, 2, 3, 4, 5, 4, 4};
-
-        System.out.println(findDistinctPerSlidingWindow_Linear_time(arr, arr.length, 3));
+        String ss = "IYouLove";
+        ArrayList<String> dict = new ArrayList();
+        dict.add("I");
+        dict.add("Love");
+        dict.add("You");
+        System.out.println(wordBreak(dict, ss));
         System.out.println("Exit Main----------------------");
     }
+
+
+    static boolean wordBreak(List<String> wordList,
+                             String word) {
+        // If the word is empty, it can be broken down into
+        // an empty list of words
+        if (word.isEmpty()) {
+            return true;
+        }
+
+        int wordLen = word.length();
+
+        // Check if the word can be broken down into
+        // words from the wordList
+        for (int i = 1; i <= wordLen; ++i) {
+            String prefix = word.substring(0, i);
+
+            if (wordList.contains(prefix)
+                    && wordBreak(wordList, word.substring(i))) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
 
     //////////////////////////////////////////////////////////////////////////////////////////
 
     /**
+     * int[] arr = new int[]{1, 1, 2, 3, 4, 5, 4, 4};
+     * System.out.println(findDistinctPerSlidingWindow_Linear_time(arr, arr.length, 3));
      * Solved within3 mins
      *
      * Space O(N)

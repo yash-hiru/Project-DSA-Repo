@@ -40,6 +40,10 @@ public class MyTrie {
         trie.insert("yashashree");
         trie.insert("yashodhar");
 
+
+        System.out.println("Find: ========================");
+        trie.find("hello");
+
         System.out.println("Statistics: ========================");
         trie.printWordsWithCounts(trie.root, "");
 
@@ -75,6 +79,29 @@ public class MyTrie {
             }
             // Word level stats
             node.isEndOfWord = true;
+        }
+    }
+
+    public boolean find(String str) {
+        if (str == null || str.trim().length() == 0) {
+            return false;
+        }
+        MyTrieNode node = root; // Initial state
+        // Update the trie
+        for (int i = 0; i < str.length(); i++) {
+            char ch = str.charAt(i);
+            if (!node.mapping.containsKey("" + ch)) {
+                // System.out.println("Find: " + str + " : FALSE");
+                return false;
+            }
+            node = node.mapping.get("" + ch); // Next level node
+        }
+        if (node.isEndOfWord) {
+            System.out.println("Find: " + str + " : TRUE");
+            return true;
+        } else {
+            //System.out.println("Find: " + str + " : FALSE");
+            return false;
         }
     }
 
