@@ -1,61 +1,67 @@
 package com.hiru.dsa.java.realtime;
 
+import org.apache.commons.lang3.StringUtils;
+
 public class ServiceNow_DecodeString {
     // Online Java Compiler
 // Use this editor to write, compile and run your Java code online
 
-    /**
-     * a2[b]
-     * decoded String---- [a] [abb]
-     * Abb
-     *
-     * A2[b2[ab]]
-     *
-     *
-     * A=decode(2,str)
-     * case-- Number--> get the inner pattern,by trimming,  decode
-     *
-     *
-     * Abababbabab
-     * Nuber for repeation --Not part of data
-     *
-     * Stack
-     */
+
     public static void main(String[] args) {
-        System.out.println("Try programiz.pro");
-        System.out.println(decode("a2[b]"));
+        //System.out.println(decode("a2[b]")); //Worked
+        // System.out.println(decode("A2[b2[ab]]"));// Worked
+        // System.out.println(decode("A2[b2[ab]cc]dd"));// Worked
     }
 
 
+    /**
+     * Learnings ======================
+     * .....................1. Case1 and Case2 Combinations within recursion
+     * .....................2. LIBRARY METHODS:
+     * ...........................StringUtils.isNumeric() and Index Handling required revision (EXTREMELY IMPORTANT)
+     * ...........................
+     * .....................3. Edge case misses for combination of inputs
+     * .....................4.
+     *
+     * @param s
+     *
+     * @return
+     */
     static String decode(String s) {
-        String decodedString;
-        if (s == null || s.length() == 0) {
-            return "";
-        }
-        int i = 0;
+        String decodedString = "";
+        if (s.isEmpty() || s.length() == 1)
+            return s;
+        if (StringUtils.isNumeric(s.substring(0, 1))) {
+            // CASE-----Process Number
+            String numStr = "";
+            int i = 0;
+            while (StringUtils.isNumeric("" + s.charAt(i))) {
+                numStr += s.charAt(i);
+                i++;
+            }
 
-        // CASE-----Simple characters
-        while (!isNumeric(s.charAt(i)) && s.charAt(i) != '[' && s.charAt(i) != ']') {
-            decodedString.append(s.charAt(i) + "");
+            if (numStr.length() > 0) {
+                int number = strToNum(numStr);
+                // Get the inner String and decode
+                // Recurse
+                String d = decode(s.substring(i + 1, getIndexOfClosingBracket(s))); //
+                for (int j = 0; j < number; j++) {
+                    decodedString += (d + ""); // Append multiple occurances
+                }
+            }
+            return decodedString + decode(s.substring(getIndexOfClosingBracket(s) + 1));
+        } else {
+            // Normal Characters
+            int i = 0;
+            // CASE-----Simple characters
+            while (i < s.length() && !StringUtils.isNumeric("" + s.charAt(i)) && s.charAt(i) != '[' && s.charAt(i) != ']') {
+                decodedString += (s.charAt(i) + "");
+                i++;
+            }
+            return decodedString + decode(s.substring(i));
         }
 
-        // CASE-----Process Number
-        String numStr = "";
-        int i = 0;
-        while (isNumber(s.charAt(i))) {
-            num += s.charAt(i);
-            i++;
-        }
 
-        if (numStr.length() > 0) {
-            int number = strToNum(numStr);
-            // Get the inner String and decode
-            // Recurse
-            String d = decode(s.substring(), i - 1, getIndexOfClosingBracket(s)); //
-            for (j = 0; j < number; j++)
-                decodedString.append(d + ""); // Append multiple occurances
-        }
-        return decodedString;
     }
 
 
@@ -64,12 +70,11 @@ public class ServiceNow_DecodeString {
     }
 
     static int getIndexOfClosingBracket(String s) {
-        for (int i = s.lenth() - 1; i >= 0; i--) {
-            if (s.chatAt(i) == ']') {
+        for (int i = s.length() - 1; i >= 0; i--) {
+            if (s.charAt(i) == ']') {
                 return i;
             }
         }
+        return -1;
     }
-
-
 }
