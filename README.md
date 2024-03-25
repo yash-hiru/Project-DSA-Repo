@@ -1191,7 +1191,7 @@ class Trie {
 ---
 
 ## 8. Theme ==> Misc DSA
-##### String
+### String ---------------------------------------------------------------------------------------
 - String Functions to avoid confusion
   ```java
     String str1 = "01234";
@@ -1226,17 +1226,7 @@ public class ServiceNow_DecodeString {
 
 
     /**
-     * Learnings ======================
-     * .....................1. Case1 and Case2 Combinations within recursion
-     * .....................2. LIBRARY METHODS:
-     * ...........................StringUtils.isNumeric() and Index Handling required revision (EXTREMELY IMPORTANT)
-     * ...........................
-     * .....................3. Edge case misses for combination of inputs
-     * .....................4.
-     *
-     * @param s
-     *
-     * @return
+      Core method
      */
     static String decode(String s) {
         String decodedString = "";
@@ -1290,6 +1280,7 @@ public class ServiceNow_DecodeString {
     }
 }
 ```
+
 - **PROBLEM--Word Break**
   ```java
   static boolean wordBreak(List<String> wordList,
@@ -1311,14 +1302,13 @@ public class ServiceNow_DecodeString {
         return false; //No luck
     }
   ```
-##### Java Queue
-
+### Queue (Java)  ---------------------------------------------------------------------------------------
 - Inbuilt Queue: ```LinkedList<Integer> queue = new LinkedList<>();```
 - Enque/ADD: ```list.add(e);```
 - Deque/POLL: ```int e = list.poll();```
 - PEEK (Gets but DONT removes): ```int e = list.peek(e);```
 
-##### Java Stack
+### Stack (Java)  ---------------------------------------------------------------------------------------
 
 ```java
 class Test {
@@ -1332,7 +1322,7 @@ class Test {
 }
 ```
 
-##### Java HashSet (Cache for unsorted elements)
+### HashSet (Java) ---------------------------------------------------------------------------------------
 
 - Use as cache for ```unsorted``` past seen element lookup
 - ```Matching pair sum problem``` for ```unsorted``` array could be solved using that in O(N) time. like below
