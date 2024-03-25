@@ -1192,10 +1192,105 @@ class Trie {
 
 ## 8. Theme ==> Misc DSA
 ##### String
+- String Functions to avoid confusion
+  ```java
+    String str1 = "01234";
+    str1.charAt(1) == '1' ;
+    str1.charAt(3) == '3' ;
+    StringUtils.equals(str1.substring(3, 4), "3") ; // Extract Single character at i by s.substring(i,i+1); 
+    StringUtils.equals(str1.substring(4, 5), "4") ; // Extract Single character at i by s.substring(i,i+1); 
+    StringUtils.equals(str1.substring(0, 2), "01") ; // Extract k character at i by s.substring(i,i+k+1) ==> s.substring(0,0+1+1) ==> s.substring(0,2) ==> "01"
+    StringUtils.equals(str1.substring(2, 4), "23") ; // Same as above
+    StringUtils.equals(str1.substring(0, str1.length()), str1) ; // Dont worry about index out of bound for referring s.length() index as endIndex
+
+    String str2 = "1[[22]]33"; // Input String
+    str2.indexOf('[') == 1 ; // Returns first char occurance index (use for pranthesis matching--open paranthesis)
+    str2.lastIndexOf(']') == 6; //Returns last char occurance index (use for pranthesis matching--close paranthesis)
+  ```
 - All primitive types including , String are pass BY VALUE. Safe to pass without worring.
 -  Substring usage== > **endIndex + 1**  to include endIndex char
 -  e.g. ```"aaBBBcc".substring(2, 4+1)``` to get **BBB**
-- Word Break Problem
+
+-- **PROBLEM--Decode String**  
+```java
+public class ServiceNow_DecodeString {
+    // Online Java Compiler
+// Use this editor to write, compile and run your Java code online
+
+
+    public static void main(String[] args) {
+        //System.out.println(decode("a2[b]")); //Worked
+        // System.out.println(decode("A2[b2[ab]]"));// Worked
+        System.out.println(decode("A2[b2[ab]cc]dd"));// Worked
+    }
+
+
+    /**
+     * Learnings ======================
+     * .....................1. Case1 and Case2 Combinations within recursion
+     * .....................2. LIBRARY METHODS:
+     * ...........................StringUtils.isNumeric() and Index Handling required revision (EXTREMELY IMPORTANT)
+     * ...........................
+     * .....................3. Edge case misses for combination of inputs
+     * .....................4.
+     *
+     * @param s
+     *
+     * @return
+     */
+    static String decode(String s) {
+        String decodedString = "";
+        if (s.isEmpty() || s.length() == 1)
+            return s;
+        // CASE1-----Process Number and remaining string
+        if (StringUtils.isNumeric(s.substring(0, 1))) {
+
+            String numStr = "";
+            int i = 0;
+            while (StringUtils.isNumeric("" + s.charAt(i))) {
+                numStr += s.charAt(i);
+                i++;
+            }
+            if (numStr.length() > 0) {
+                int number = strToNum(numStr);
+                // Get the inner String and decode
+                // Recurse
+                String d = decode(s.substring(i + 1, getIndexOfClosingBracket(s))); //Recurse1 --for inner normal substring
+                for (int j = 0; j < number; j++) {
+                    decodedString += (d + ""); // Append multiple occurances
+                }
+            }
+            return decodedString + decode(s.substring(getIndexOfClosingBracket(s) + 1)); //Recurse2 --for substring after this special one
+        }
+        // CASE2-----Process Normal String
+        else {
+            // Normal Characters
+            int i = 0;
+            // CASE-----Simple characters
+            while (i < s.length() && !StringUtils.isNumeric("" + s.charAt(i)) && s.charAt(i) != '[' && s.charAt(i) != ']') {
+                decodedString += (s.charAt(i) + "");
+                i++;
+            }
+            return decodedString + decode(s.substring(i)); //Recurse3 -- for special substring
+        }
+    }
+
+
+    static int strToNum(String s) {
+        return Integer.valueOf(s);
+    }
+
+    static int getIndexOfClosingBracket(String s) {
+        for (int i = s.length() - 1; i >= 0; i--) {
+            if (s.charAt(i) == ']') {
+                return i;
+            }
+        }
+        return -1;
+    }
+}
+```
+- **PROBLEM--Word Break**
   ```java
   static boolean wordBreak(List<String> wordList,
                              String word) {
