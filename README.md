@@ -10,7 +10,7 @@
 - [THEME 5 ==> Trees-data-structure](https://github.com/yash-hiru/Project-DSA-Repo?tab=readme-ov-file#5-theme--trees-data-structure)
 - [THEME 6 ==> Trie-n-ary-tree-as-pre-processed-dictionary](https://github.com/yash-hiru/Project-DSA-Repo?tab=readme-ov-file#6-theme--trie-n-ary-tree-as-pre-processed-dictionary)
 - [THEME 7 ==> Arrays-and-strings](https://github.com/yash-hiru/Project-DSA-Repo?tab=readme-ov-file#7-theme--arrays-and-strings)
-- [THEME 8 ==> Misc-dsa](https://github.com/yash-hiru/Project-DSA-Repo?tab=readme-ov-file#8-theme--misc-dsa)
+- [THEME 8 ==> Misc-dsa (String, HashMap, Stacks, Queues, HashSet](https://github.com/yash-hiru/Project-DSA-Repo?tab=readme-ov-file#8-theme--misc-dsa)
 
 ---
 
