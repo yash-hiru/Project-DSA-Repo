@@ -1,4 +1,4 @@
-package com.hiru.dsa.java.datastructures.arrays;
+package com.hiru.dsa.java.datastructures.string;
 //TODO: Implement 15/02/2024
 
 /**

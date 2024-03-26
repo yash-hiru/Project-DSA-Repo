@@ -1,4 +1,4 @@
-package com.hiru.dsa.java.datastructures.arrays;
+package com.hiru.dsa.java.datastructures.string;
 
 /**
  * LONGEST PALINDROME SUB-SEQUENCE
