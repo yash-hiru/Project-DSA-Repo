@@ -16,7 +16,7 @@
 
 ## 1. Coding Interview
 
-####    
+####      
 
 Most of the problem belongs to some category or theme with minor tweaks viz. as Datatype, constraints, conditions,
 names.
@@ -1191,7 +1191,19 @@ class Trie {
 ---
 
 ## 8. Theme ==> Misc DSA
+
+### Arrays ---------------------------------------------------------------------------------------
+
+- .............1) Have if else for BOTH happy and sad FOR LOOP exits types
+- .............2) Its RECOMMENDED to to have Index bound checks ```even though APPEAR REDUNDANT```. Efficiency comes
+  after accuracy.
+- .............3) Try to have base-base (aka main input conditions) conditions in the very beginning before complex
+  processing
+- .............4) Keep eye on other base conditions (e.g. binary search with one or two elements ranges--- i=9|j=9 ,
+  i=10,j=11)
+
 ### String ---------------------------------------------------------------------------------------
+
 - String Functions to avoid confusion
   ```java
     String str1 = "01234";
@@ -1208,10 +1220,11 @@ class Trie {
     str2.lastIndexOf(']') == 6; //Returns last char occurance index (use for pranthesis matching--close paranthesis)
   ```
 - All primitive types including , String are pass BY VALUE. Safe to pass without worring.
--  Substring usage== > **endIndex + 1**  to include endIndex char
--  e.g. ```"aaBBBcc".substring(2, 4+1)``` to get **BBB**
+- Substring usage== > **endIndex + 1**  to include endIndex char
+- e.g. ```"aaBBBcc".substring(2, 4+1)``` to get **BBB**
 
--- **PROBLEM--Decode String**  
+-- **PROBLEM--Decode String**
+
 ```java
 public class ServiceNow_DecodeString {
     // Online Java Compiler
@@ -1226,7 +1239,7 @@ public class ServiceNow_DecodeString {
 
 
     /**
-      Core method
+     Core method
      */
     static String decode(String s) {
         String decodedString = "";
@@ -1302,7 +1315,9 @@ public class ServiceNow_DecodeString {
         return false; //No luck
     }
   ```
+
 ### Queue (Java)  ---------------------------------------------------------------------------------------
+
 - Inbuilt Queue: ```LinkedList<Integer> queue = new LinkedList<>();```
 - Enque/ADD: ```list.add(e);```
 - Deque/POLL: ```int e = list.poll();```
