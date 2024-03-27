@@ -16,7 +16,7 @@
 
 ## 1. Coding Interview
 
-####                                                    
+####                                                          
 
 Most of the problem belongs to some category or theme with minor tweaks viz. as Datatype, constraints, conditions,
 names.
@@ -1503,7 +1503,19 @@ Signopt 0 OctalDigits
 
 --- 
 
-# Internal Repositories
+## 9. Theme ==> BitMagic (solve at least 10 problems)
+
+TODO--Update this section
+---
+
+# References
+
+### Internal Repositories
 
 - [Topic Wise Notes](https://github.com/yash-hiru/Project-DSA-Repo/tree/main/src/com/hiru/dsa/md)
+
+### Resources
+
+- [Google Question Bank](https://www.geeksforgeeks.org/google-interview-preparation/)
   </span>
+
