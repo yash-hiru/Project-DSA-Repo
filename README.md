@@ -16,7 +16,7 @@
 
 ## 1. Coding Interview
 
-####                                            
+####                                                    
 
 Most of the problem belongs to some category or theme with minor tweaks viz. as Datatype, constraints, conditions,
 names.
@@ -1469,6 +1469,36 @@ class Demo {
         return false;
     }
 }
+```
+
+### PRIMITIVE TYPES e.g Integer (Java Wrapper Classes) ---------------------------------------------------------------------------------------
+
+**[API guide for java.lang.Integer](https://docs.oracle.com/javase%2F7%2Fdocs%2Fapi%2F%2F/java/lang/Integer.html)**
+
+- **Binary String of Int**
+
+```java
+    String binString=Integer.toBinaryString(i);
+```
+
+- **String to Int**
+
+```java
+Integer i=Integer.parseInt(strInt);
+```
+
+- **Decode** (Decodes any type of string and return Integer)
+
+```
+public static Integer decode(String nm);
+
+DecodableString:
+Signopt DecimalNumeral
+Signopt 0x HexDigits
+Signopt 0X HexDigits
+Signopt # HexDigits
+Signopt 0 OctalDigits
+
 ```
 
 --- 
