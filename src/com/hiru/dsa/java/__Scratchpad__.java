@@ -6,21 +6,42 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+/**
+ * ======================= Practice Questions 26/03/2024======================
+ *
+ * Find a peak element which is not smaller than its neighbours - GeeksforGeeks
+ * https://www.geeksforgeeks.org/find-a-peak-in-a-given-array/amp/
+ *
+ *
+ * Find Subarray with given sum | Set 1 (Non-negative Numbers) - GeeksforGeeks
+ * https://www.geeksforgeeks.org/find-subarray-with-given-um/amp/
+ */
 public class __Scratchpad__ {
 
     public static void main(String[] args) {
-        System.out.println("Enter Main----------------------");
+        //System.out.println("Enter Main----------------------");
         // Test here
-        String ss = "IYouLove";
-        ArrayList<String> dict = new ArrayList();
-        dict.add("I");
-        dict.add("Love");
-        dict.add("You");
-        System.out.println(wordBreak(dict, ss));
-        System.out.println("Exit Main----------------------");
+        int sum = 0;
+        for (int i : new int[]{Integer.MAX_VALUE, 3}) {
+            sum += i;
+        }
+        System.out.println(sum);
+
+//        System.out.println("Exit Main----------------------");
+
     }
 
 
+    /**
+     * Driver code===>
+     * // Test here
+     * String ss = "IYouLove";
+     * ArrayList<String> dict = new ArrayList();
+     * dict.add("I");
+     * dict.add("Love");
+     * dict.add("You");
+     * System.out.println(wordBreak(dict, ss));
+     */
     static boolean wordBreak(List<String> wordList,
                              String word) {
         // If the word is empty, it can be broken down into
